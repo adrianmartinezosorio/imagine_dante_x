@@ -1,25 +1,23 @@
 <?php
+/*--------------------------------------------------------------------------*/
 /*
 
-Imagine_dante 1.0.
-Diciembre 2015.
+	Adrián Martínez Osorio.
 
-Imagine_dante 2.0.
-Febrero 2017.
+		imagine_dante 1.0. Diciembre 2015.
 
-Imagine_dante 3.0.
-Marzo 2018.
+		imagine_dante 2.0. Febrero 2017.
 
-Imagine_dante 4.0.
-Enero 2020.
+		imagine_dante 3.0. Marzo 2018.
 
-Imagine_dante 5.0.
-Marzo 2021.
+		imagine_dante 4.0. Enero 2020.
 
-Imagine_dante X.
-Noviembre 2021.
+		imagine_dante 5.0. Marzo 2021.
+
+		imagine_dante X. Noviembre 2021.
 
 */
+/*--------------------------------------------------------------------------*/
 
 include("modules/basic.php");
 
