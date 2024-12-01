@@ -54,33 +54,36 @@ if(is_summer_time()){
 /*---------------------------------------------------------------------------------------------*/
 if($IMAGINE_ENABLE):
 
-	include('modules/ierror.php');
-
-	include('modules/connect.php');
-	include('modules/databases.php');
-	include('modules/bbdd.php');
-	include('modules/freequery.php');
-	include('modules/imaginequery.php');
-
-	include('modules/math.php');
-	include('modules/string.php');
-	include('modules/validate.php');
-	include('modules/files.php');
-	include('modules/folders.php');
-	include('modules/time.php');
-	include('modules/zip.php');
-
-	include('modules/json.php');
-	include('modules/random.php');
-	include('modules/parsedata.php');
-	include('modules/encrypt.php');
-	include('modules/arrays.php');
-	include('modules/session.php');
-	include('modules/entidades.php');
-	include('modules/atajos.php');
-	include('modules/scraping.php');
-	include('modules/interface.php');
-	include('modules/urls.php');
+	$modules = [
+		'ierror.php',
+		'connect.php',
+		'databases.php',
+		'bbdd.php',
+		'freequery.php',
+		'imaginequery.php',
+		'math.php',
+		'string.php',
+		'validate.php',
+		'files.php',
+		'folders.php',
+		'time.php',
+		'zip.php',
+		'json.php',
+		'random.php',
+		'parsedata.php',
+		'encrypt.php',
+		'arrays.php',
+		'session.php',
+		'entidades.php',
+		'atajos.php',
+		'scraping.php',
+		'interface.php',
+		'urls.php',
+	];
+	
+	foreach ($modules as $module) {
+		include("modules/".$module);
+	}
 
 	if($IMAGINE_IMAGE_MODULE):
 		include('modules/exif.php');
