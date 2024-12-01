@@ -93,7 +93,13 @@ if($IMAGINE_ENABLE):
 	endif;
 
 	foreach ($modules as $module) {
-		include("modules/".$module);
+
+		if(file_exists("modules/".$module)){
+
+			include("modules/".$module);
+			
+		}
+		
 	}
 
 endif;
