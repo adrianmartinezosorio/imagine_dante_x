@@ -16,12 +16,12 @@ EL numero o id.
 16-6-2016
 http://dantecreations.com/
 Dante.
+
 */
 /*-----------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------*/
 
 function cid($id){$numero_original = $id;$id = str_replace('1','z',$id);$id = str_replace('2','x',$id);$id = str_replace('3','y',$id);$id = str_replace('4','d',$id);$id = str_replace('5','k',$id);$id = str_replace('6','w',$id);$id = str_replace('7','h',$id);$id = str_replace('8','n',$id);$id = str_replace('9','a',$id);$id = str_replace('0','s',$id);$id = strrev(strtoupper($id));return $id;}
-
 
 function did($id){ $datos = $id;$permitidos = "ZXYDKWHNAS";for ($i=0; $i<strlen($datos); $i++){if(strpos($permitidos, substr($datos,$i,1))===false){ return false; }}$id = strtolower($id);$id = str_replace('z','1',$id);$id = str_replace('x','2',$id);$id = str_replace('y','3',$id);$id = str_replace('d','4',$id);$id = str_replace('k','5',$id);$id = str_replace('w','6',$id);$id = str_replace('h','7',$id);$id = str_replace('n','8',$id);$id = str_replace('a','9',$id);$id = str_replace('s','0',$id);$id = strrev($id);return $id;}
 
