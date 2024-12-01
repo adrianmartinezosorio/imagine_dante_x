@@ -81,27 +81,26 @@ if($IMAGINE_ENABLE):
 		'urls.php',
 	];
 	
-	foreach ($modules as $module) {
-		include("modules/".$module);
-	}
-
 	if($IMAGINE_IMAGE_MODULE):
-		include('modules/exif.php');
-		include('modules/images.php');
+		$modules[] = 'exif.php';
+		$modules[] = 'images.php';
 	endif;
 
 	if($IMAGINE_YOUTUBE_MODULE):
-		include('modules/youtube.php');
+		$modules[] = 'youtube.php';
 	endif;
 
 	if($IMAGINE_MAIL_MODULE):
-		include('modules/mail.php');
+		$modules[] = 'mail.php';
 	endif;
 
 	if($IMAGINE_TRANSLATE_MODULE):
-		include('modules/translate.php');
+		$modules[] = 'translate.php';
 	endif;
 
+	foreach ($modules as $module) {
+		include("modules/".$module);
+	}
 
 endif;
 /*---------------------------------------------------------------------------------------------*/
