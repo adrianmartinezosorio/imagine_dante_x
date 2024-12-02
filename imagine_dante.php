@@ -27,14 +27,6 @@ include("modules/basic.php");
 $IMAGINE_ENABLE = true;
 
 /*--------------------------------------------------------------------------*/
-/* MODULES ENABLE */
-/*--------------------------------------------------------------------------*/
-$IMAGINE_IMAGE_MODULE = true;
-$IMAGINE_YOUTUBE_MODULE = false;
-$IMAGINE_MAIL_MODULE = false;
-$IMAGINE_TRANSLATE_MODULE = true;
-
-/*--------------------------------------------------------------------------*/
 /* CONFIG */
 /*--------------------------------------------------------------------------*/
 if(is_summer_time()){
@@ -68,35 +60,36 @@ if($IMAGINE_ENABLE):
 		'encrypt.php',
 		'arrays.php',
 		'session.php',
-		'entidades.php',
 		'atajos.php',
+		'urls.php',
+		'images.php'
+	];
+
+	$plugins = [
+		'entidades.php',
 		'scraping.php',
 		'interface.php',
-		'urls.php',
+		'exif.php',
+		'youtube.php',
+		'translate.php',
+		'mail.php'
 	];
-	
-	if($IMAGINE_IMAGE_MODULE):
-		$modules[] = 'exif.php';
-		$modules[] = 'images.php';
-	endif;
-
-	if($IMAGINE_YOUTUBE_MODULE):
-		$modules[] = 'youtube.php';
-	endif;
-
-	if($IMAGINE_MAIL_MODULE):
-		$modules[] = 'mail.php';
-	endif;
-
-	if($IMAGINE_TRANSLATE_MODULE):
-		$modules[] = 'translate.php';
-	endif;
 
 	foreach ($modules as $module) {
 
 		if(file_exists("modules/".$module)){
 
 			include("modules/".$module);
+			
+		}
+		
+	}
+
+	foreach ($plugins as $plugin) {
+
+		if(file_exists("plugins/".$plugin)){
+
+			include("plugins/".$plugin);
 			
 		}
 		
