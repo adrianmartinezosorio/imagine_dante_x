@@ -21,9 +21,9 @@ function is_summer_time(){
 }
 
 if(is_summer_time()){
-	$SERVER_TIME_DIFERENT = 0;
-}else{
 	$SERVER_TIME_DIFERENT = (3600 * 1);
+}else{
+	$SERVER_TIME_DIFERENT = 0;
 }
 
 ?>

@@ -26,11 +26,11 @@ echo "<b>HORA Y FECHA:</b> " . dd(t());
 
 if(is_summer_time()){
 	
-	echo "<b>HORARIO AUTOMATICO:</b> De verano (TIMESTAMP + 0H).";
+	echo "<b>HORARIO AUTOMATICO:</b> De verano (TIMESTAMP + 1H).";
 
 }else{
 	
-	echo "<b>HORARIO AUTOMATICO:</b> De invierno (TIMESTAMP + 1H).";
+	echo "<b>HORARIO AUTOMATICO:</b> De invierno (TIMESTAMP + 0H).";
 
 }
 
