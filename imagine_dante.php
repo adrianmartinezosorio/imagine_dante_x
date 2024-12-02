@@ -4,12 +4,12 @@ $IMAGINE_ENABLE = true;
 
 if($IMAGINE_ENABLE){
 
-	$system = [
+	$IMAGINE_SYSTEM = [
 		'ierror.php',
 		'time-change.php'
 	];
 
-	$modules = [
+	$IMAGINE_MODULES = [
 		'connect.php',
 		'databases.php',
 		'bbdd.php',
@@ -33,7 +33,7 @@ if($IMAGINE_ENABLE){
 		'images.php'
 	];
 
-	$plugins = [
+	$IMAGINE_PLUGINS = [
 		'plugin-entities.php',
 		'plugin-scraping.php',
 		'plugin-interface.php',
@@ -43,7 +43,7 @@ if($IMAGINE_ENABLE){
 		'plugin-mail.php'
 	];
 
-	foreach ($system as $sys) {
+	foreach ($IMAGINE_SYSTEM as $sys) {
 
 		if(file_exists("system/".$sys)){
 
@@ -53,7 +53,7 @@ if($IMAGINE_ENABLE){
 		
 	}
 
-	foreach ($modules as $module) {
+	foreach ($IMAGINE_MODULES as $module) {
 
 		if(file_exists("modules/".$module)){
 
@@ -63,7 +63,7 @@ if($IMAGINE_ENABLE){
 		
 	}
 
-	foreach ($plugins as $plugin) {
+	foreach ($IMAGINE_PLUGINS as $plugin) {
 
 		if(file_exists("plugins/".$plugin)){
 
