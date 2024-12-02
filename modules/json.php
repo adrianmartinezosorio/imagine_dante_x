@@ -1,5 +1,17 @@
 <?php
 
+function addjson($addstr,$json){
+
+	$likesarray = json_decode($json, true);
+
+	$likesarray[] = $addstr;
+
+	$likesjson = json_encode($likesarray);
+
+	return $likesjson;
+
+}
+
 function add_json($addstr,$json){
 
 	$likesarray = json_decode($json, true);

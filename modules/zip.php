@@ -1,5 +1,40 @@
 <?php
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+/*
+DOCUMENTACION (COMPRIMIR ARCHIVO EN ZIP)
 
+Funcion: $function = filecompress($nombre_archivo,$nombre_salida);
+Argumentos: ruta del archivo a comprimir, nombre de salida del archibo comprimido.
+
+Devolvera true en caso de existo sino false. Comparar con un if.
+
+Dante.
+27-3-2016
+
+*/
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------	
+function filecompress($nombre_archivo,$nombre_salida){
+	 
+	$zip = new ZipArchive();
+	 
+	$filename = $nombre_salida;
+	 
+	if($zip->open($filename,ZIPARCHIVE::CREATE)===true) {
+			$zip->addFile($nombre_archivo);
+			$zip->close();
+			return true;
+	}
+	else {
+		
+			return false;
+			
+	}
+	
+}
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
 function agregar_zip($dir, $zip) {
   //verificamos si $dir es un directorio
   if (is_dir($dir)) {
@@ -30,8 +65,6 @@ function agregar_zip($dir, $zip) {
     }
   }
 }
-
-
 function zip($dir,$rutaFinal,$archivoZip){
 
 	$zip = new ZipArchive();

@@ -23,77 +23,8 @@ function get_data($path){
     }
 
 }
-function addjson($addstr,$json){
 
-	$likesarray = json_decode($json, true);
 
-	$likesarray[] = $addstr;
-
-	$likesjson = json_encode($likesarray);
-
-	return $likesjson;
-
-}
-/*
-function removejson($removestr,$json){
-
-	$likesarray = json_decode($json, true);
-
-	foreach (array_keys($likesarray, $removestr) as $key) {
-    		unset($likesarray[$key]);
-	}
-
-	$likesarray = json_encode($likesarray);
-
-	return $likesjson;
-
-}
-
-$array = array(1,2,3,4);
-
-$array = json_encode($array);
-
-$array1 = addjson(9,$array);
-
-$array2 = removejson(1,$array1);
-
-echo $array2;
-*/
-
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-/*
-DOCUMENTACION (COMPRIMIR ARCHIVO EN ZIP)
-
-Funcion: $function = comprimir_archivo($nombre_archivo,$nombre_salida);
-Argumentos: ruta del archivo a comprimir, nombre de salida del archibo comprimido.
-
-Devolvera true en caso de existo sino false. Comparar con un if.
-
-Dante.
-27-3-2016
-
-*/
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------	
-function filecompress($nombre_archivo,$nombre_salida){
-	 
-	$zip = new ZipArchive();
-	 
-	$filename = $nombre_salida;
-	 
-	if($zip->open($filename,ZIPARCHIVE::CREATE)===true) {
-			$zip->addFile($nombre_archivo);
-			$zip->close();
-			return true;
-	}
-	else {
-		
-			return false;
-			
-	}
-	
-}
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
 /*

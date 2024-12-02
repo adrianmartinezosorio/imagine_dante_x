@@ -16,26 +16,6 @@ Dante.
 */
 /*-----------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------*/
-/*
-function string2url($string){
-    
-  if(!empty($url)){
-    
-      $url = mb_strtolower(trim($url));
-      $find = array('á', 'é', 'í', 'ó', 'ú', 'ñ', 'ß', 'ä', 'ë','ï', 'ö', 'ü');
-      $repl = array('a', 'e', 'i', 'o', 'u', 'n', 'fz', 'a', 'e','i', 'o', 'u');
-      $url = str_replace ($find, $repl, $url);
-      $find = array(' ', '&', '\r\n', '\n', '+');
-      $url = str_replace ($find, '-', $url);
-      $find = array('/[^a-z0-9\-<>]/', '/[\-]+/', '/<[^>]*>/');
-      $repl = array('', '-', '');
-      $url = preg_replace($find, $repl, $url);
-      return $url;
-  
-  }
-  
-}//End function.
-*/
 function string2url($url) {
  
       // Tranformamos todo a minusculas
