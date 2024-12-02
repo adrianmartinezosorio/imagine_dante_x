@@ -5,7 +5,8 @@ $IMAGINE_ENABLE = true;
 if($IMAGINE_ENABLE){
 
 	$system = [
-		'ierror.php'
+		'ierror.php',
+		'time-change.php'
 	];
 
 	$modules = [
