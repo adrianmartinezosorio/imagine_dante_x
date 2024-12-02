@@ -45,32 +45,20 @@ if($IMAGINE_ENABLE){
 
 	foreach ($IMAGINE_SYSTEM as $sys) {
 
-		if(file_exists("system/".$sys)){
-
-			include("system/".$sys);
-			
-		}
+		include("system/".$sys);
 		
 	}
 
 	foreach ($IMAGINE_MODULES as $module) {
 
-		if(file_exists("modules/".$module)){
-
-			include("modules/".$module);
-			
-		}
+		include("modules/".$module);
 		
 	}
 
 	foreach ($IMAGINE_PLUGINS as $plugin) {
 
-		if(file_exists("plugins/".$plugin)){
+		include("plugins/".$plugin);
 
-			include("plugins/".$plugin);
-			
-		}
-		
 	}
 
 }
