@@ -2,10 +2,13 @@
 
 $IMAGINE_ENABLE = true;
 
-if($IMAGINE_ENABLE):
+if($IMAGINE_ENABLE){
+
+	$system = [
+		'ierror.php'
+	];
 
 	$modules = [
-		'ierror.php',
 		'connect.php',
 		'databases.php',
 		'bbdd.php',
@@ -30,14 +33,24 @@ if($IMAGINE_ENABLE):
 	];
 
 	$plugins = [
-		'entidades.php',
-		'scraping.php',
-		'interface.php',
-		'exif.php',
-		'youtube.php',
-		'translate.php',
-		'mail.php'
+		'plugin-entities.php',
+		'plugin-scraping.php',
+		'plugin-interface.php',
+		'plugin-exif.php',
+		'plugin-youtube.php',
+		'plugin-translate.php',
+		'plugin-mail.php'
 	];
+
+	foreach ($system as $sys) {
+
+		if(file_exists("system/".$sys)){
+
+			include("system/".$sys);
+			
+		}
+		
+	}
 
 	foreach ($modules as $module) {
 
@@ -59,6 +72,6 @@ if($IMAGINE_ENABLE):
 		
 	}
 
-endif;
+}
 
 ?>
