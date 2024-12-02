@@ -1,5 +1,9 @@
 <?php
+/*
 
+    Cambio automático de hora entre horarios de invierno y de verano.
+
+*/
 function is_summer_time(){
 
     date_default_timezone_set('Europe/Madrid');
@@ -20,10 +24,18 @@ function is_summer_time(){
 
 }
 
-if(is_summer_time()){
-	$SERVER_TIME_DIFERENT = (3600 * 1);
+if($IMAGINE_TIME_CHANGE){
+
+    if(is_summer_time()){
+        $SERVER_TIME_DIFERENT = (3600 * 1);
+    }else{
+        $SERVER_TIME_DIFERENT = 0;
+    }
+
 }else{
-	$SERVER_TIME_DIFERENT = 0;
+    $SERVER_TIME_DIFERENT = 0;
 }
+
+
 
 ?>

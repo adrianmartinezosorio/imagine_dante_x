@@ -1,13 +1,19 @@
 <?php
 function ierror($id,$msg){
 	
-	$msg = '@imaginedante | ' . date('d/m/Y H:i:s',time()) . ' | '. $id .' | ' . $msg . ' | Exe: ' . basename($_SERVER['PHP_SELF']) . ' | '.'Error Id: '.uniqid();
+	global $IMAGINE_ERROR_LOG;
 
-	$file = fopen('ilog.html', 'a');
+	if($IMAGINE_ERROR_LOG){
 
-	fwrite($file, '<br>'.$msg . '<br>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------');
+		$msg = '@imaginedante | ' . date('d/m/Y H:i:s',time()) . ' | '. $id .' | ' . $msg . ' | Exe: ' . basename($_SERVER['PHP_SELF']) . ' | '.'Error Id: '.uniqid();
 
-	fclose($file);
+		$file = fopen('ilog.html', 'a');
+
+		fwrite($file, '<br>'.$msg . '<br>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------');
+
+		fclose($file);
+
+	}
 
 }
 function initierror(){
@@ -26,6 +32,7 @@ function initierror(){
 
 }
 
-
-initierror();
+if($IMAGINE_ERROR_LOG){
+	initierror();
+}
 ?>
