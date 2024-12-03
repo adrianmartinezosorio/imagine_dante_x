@@ -1,4 +1,14 @@
 <?php
+/*
+
+Importante: Incluir este archivo siempre por encima de "imagine_dante.php" de la siguiente manera:
+
+include("imagine_connect.php");
+include("imagine_dante.php");
+
+Se diferencian los datos de conexión del resto del framework para poder trabajar con diferentes conexiones en diferentes proyectos simultáneamente.
+
+*/
 
 $IMAGINE_CONNECT = true; //false: no utilizamos conexion a base de datos.
 $IMAGINE_CONNECT_PASS_ENABLE = false; //true: si se esta usando contraseña.
