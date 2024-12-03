@@ -31,6 +31,7 @@ if($IMAGINE_ENABLE){
 		'encrypt.php',
 		'arrays.php',
 		'session.php',
+		'path.php',
 		'urls.php',
 		'images.php',
 		'json.php',
