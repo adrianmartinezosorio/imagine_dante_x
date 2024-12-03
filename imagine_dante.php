@@ -8,8 +8,8 @@ $IMAGINE_TIME_CHANGE = true; //Cambio automático de hora entre horarios de invi
 if($IMAGINE_ENABLE){
 
 	$IMAGINE_SYSTEM = [
-		'ierror.php',
-		'time-change.php'
+		'system-errors.php',
+		'system-time-change.php'
 	];
 
 	$IMAGINE_MODULES = [
