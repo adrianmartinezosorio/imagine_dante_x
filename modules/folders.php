@@ -12,7 +12,80 @@ function folder($path){
     }
 
 }
-function GetDirectorySize($path){
+/*---------------------------------------------------------------------------*/
+/* Copiamos una carpeta completa. */
+/* 2020 */
+/*---------------------------------------------------------------------------*/
+function folder_copy( $source, $target ){
+    if ( is_dir( $source ) ) {
+        @mkdir( $target );
+        $d = dir( $source );
+        while ( FALSE !== ( $entry = $d->read() ) ) {
+            if ( $entry == '.' || $entry == '..' ) {
+                continue;
+            }
+            $Entry = $source . '/' . $entry; 
+            if ( is_dir( $Entry ) ) {
+                folder_full_copy( $Entry, $target . '/' . $entry );
+                continue;
+            }
+            copy( $Entry, $target . '/' . $entry );
+
+        }
+ 
+        $d->close();
+    }else {
+        copy( $source, $target );
+    }
+}
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+/*
+DOCUMENTACION (ELIMINAR CARPETA Y CONTENIDOS).
+
+Eliminara una carpeta y todas sus subcarpetas y archivos.
+
+Funcion:  eliminar_carpeta('paradise_data/');
+Argumentos: ruta de la carpeta.
+
+
+Dante.
+http://dantecreations.com/
+8-2-2016
+
+*/
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+function folder_delete($carpeta){
+		
+	foreach(glob($carpeta . "/*") as $archivos_carpeta){
+				 
+		if (is_dir($archivos_carpeta)){
+							
+			folder_delete($archivos_carpeta);
+							
+		}else{
+			
+			unlink($archivos_carpeta);
+			
+		}
+						
+	}
+				 
+	rmdir($carpeta);
+	
+}
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+/*
+DOCUMENTACION
+
+Obtiene el peso de una carpeta.
+
+*/
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+function folder_size($path){
     $bytestotal = 0;
     $path = realpath($path);
     if($path!==false && $path!='' && file_exists($path)){
@@ -103,71 +176,10 @@ function listar_archivos($carpeta){
         }
     }
 }
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-/*
-DOCUMENTACION (ELIMINAR CARPETA Y CONTENIDOS).
-
-Eliminara una carpeta y todas sus subcarpetas y archivos.
-
-Funcion:  eliminar_carpeta('paradise_data/');
-Argumentos: ruta de la carpeta.
 
 
-Dante.
-http://dantecreations.com/
-8-2-2016
-
-*/
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-function folder_delete($carpeta){
-		
-	foreach(glob($carpeta . "/*") as $archivos_carpeta){
-				 
-		if (is_dir($archivos_carpeta)){
-							
-			folder_delete($archivos_carpeta);
-							
-		}else{
-			
-			unlink($archivos_carpeta);
-			
-		}
-						
-	}
-				 
-	rmdir($carpeta);
-	
-}
 
 
-/*---------------------------------------------------------------------------*/
-/* Copiamos una carpeta completa. */
-/* 2020 */
-/*---------------------------------------------------------------------------*/
-function folder_full_copy( $source, $target ){
-    if ( is_dir( $source ) ) {
-        @mkdir( $target );
-        $d = dir( $source );
-        while ( FALSE !== ( $entry = $d->read() ) ) {
-            if ( $entry == '.' || $entry == '..' ) {
-                continue;
-            }
-            $Entry = $source . '/' . $entry; 
-            if ( is_dir( $Entry ) ) {
-                folder_full_copy( $Entry, $target . '/' . $entry );
-                continue;
-            }
-            copy( $Entry, $target . '/' . $entry );
-
-        }
- 
-        $d->close();
-    }else {
-        copy( $source, $target );
-    }
-}
 
 
 /*---------------------------------------------------------------------------*/
