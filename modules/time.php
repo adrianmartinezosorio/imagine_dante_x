@@ -50,15 +50,7 @@ function t(){
 	return time() + $SERVER_TIME_DIFERENT;
 	
 }
-function te(){
 
-    date_default_timezone_set('Europe/Madrid');
-    
-    $timestamp = time();
-    
-    return $timestamp;
-
-}
 function dd($timestamp,$formato = 'd/m/Y - H:i:s'){
 
 	if(!empty($timestamp) && is_numeric($timestamp)){
