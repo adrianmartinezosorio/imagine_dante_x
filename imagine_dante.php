@@ -26,8 +26,6 @@ if($IMAGINE_ENABLE){
 		'files.php',
 		'folders.php',
 		'time.php',
-		'zip.php',
-		'json.php',
 		'random.php',
 		'format.php',
 		'encrypt.php',
@@ -35,10 +33,12 @@ if($IMAGINE_ENABLE){
 		'session.php',
 		'urls.php',
 		'images.php',
-		'atajos.php'
+		'json.php',
+		'zip.php'
 	];
 
 	$IMAGINE_PLUGINS = [
+		'plugin-shortcuts.php',
 		'plugin-phpmyadmin.php',
 		'plugin-entities.php',
 		'plugin-scraping.php',
