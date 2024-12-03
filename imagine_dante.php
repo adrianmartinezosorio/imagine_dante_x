@@ -27,16 +27,17 @@ if($IMAGINE_ENABLE){
 		'zip.php',
 		'json.php',
 		'random.php',
-		'parsedata.php',
+		'format.php',
 		'encrypt.php',
 		'arrays.php',
 		'session.php',
-		'atajos.php',
 		'urls.php',
-		'images.php'
+		'images.php',
+		'atajos.php'
 	];
 
 	$IMAGINE_PLUGINS = [
+		'plugin-phpmyadmin.php',
 		'plugin-entities.php',
 		'plugin-scraping.php',
 		'plugin-interface.php',

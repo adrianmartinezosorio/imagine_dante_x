@@ -10,11 +10,11 @@
 
 //FUNCIONES SECUNDARIAS
 //is_positive($numero);
-//vmail($correo);
-//vurl($url);
-//vtel($numero);
-//vcp($numero);
-//valfa($datos);
+//is_mail($correo);
+//is_url($url);
+//is_phone($numero);
+//is_postalcode($numero);
+//is_alphanumeric($datos);
 //vcountstr($datos,$minimo,$maximo);
 
 //FUNCIONES TERCIARIAS (ATAJOS)
@@ -225,7 +225,7 @@ http://dantecreations.com/
 */
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
-function vmail($correo){
+function is_mail($correo){
 	
 	if(!empty($correo)){
 
@@ -264,7 +264,7 @@ http://dantecreations.com/
 */
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
-function vurl($url){
+function is_url($url){
 
 	if(!empty($url)){
 
@@ -303,7 +303,7 @@ http://dantecreations.com/
 */
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
-function vtel($numero){
+function is_phone($numero){
 	
 	if(!empty($numero)){
 
@@ -342,7 +342,7 @@ http://dantecreations.com/
 */
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
-function vcp($numero){
+function is_postalcode($numero){
 	
 	if(!empty($numero)){
 
@@ -383,7 +383,7 @@ http://dantecreations.com/
 */
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
-function valfa($datos){
+function is_alphanumeric($datos){
 
    $permitidos = "abcdefghijklmnñopqrstuvwxyzABCDEFGHIJKLMNÑOPQRSTUVWXYZ0123456789-_ ";
    
