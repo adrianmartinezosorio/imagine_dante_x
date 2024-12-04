@@ -47,7 +47,8 @@ if($IMAGINE_ENABLE){
 		'plugin-exif.php',
 		'plugin-youtube.php',
 		'plugin-translate.php',
-		'plugin-mail.php'
+		'plugin-mail.php',
+		'plugin-binary.php'
 	];
 
 	foreach ($IMAGINE_SYSTEM as $sys) {

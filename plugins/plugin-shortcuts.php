@@ -25,6 +25,8 @@ function my($cadena){
 
 
 
+
+
 function r(){
 
 	return $_SERVER['PHP_SELF'];
@@ -41,5 +43,15 @@ function agent(){
 
 }
 
+function enc($string,$key) {
+	
+	return encrypt($string,$key);
+	  
+}
 
+function dec($string,$key) {
+	
+	return decrypt($string,$key);
+	  
+}
 ?>

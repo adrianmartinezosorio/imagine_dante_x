@@ -21,9 +21,66 @@ Dante.
 /*-----------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------*/
 
-function cid($id){$numero_original = $id;$id = str_replace('1','z',$id);$id = str_replace('2','x',$id);$id = str_replace('3','y',$id);$id = str_replace('4','d',$id);$id = str_replace('5','k',$id);$id = str_replace('6','w',$id);$id = str_replace('7','h',$id);$id = str_replace('8','n',$id);$id = str_replace('9','a',$id);$id = str_replace('0','s',$id);$id = strrev(strtoupper($id));return $id;}
+function cid($id){
 
-function did($id){ $datos = $id;$permitidos = "ZXYDKWHNAS";for ($i=0; $i<strlen($datos); $i++){if(strpos($permitidos, substr($datos,$i,1))===false){ return false; }}$id = strtolower($id);$id = str_replace('z','1',$id);$id = str_replace('x','2',$id);$id = str_replace('y','3',$id);$id = str_replace('d','4',$id);$id = str_replace('k','5',$id);$id = str_replace('w','6',$id);$id = str_replace('h','7',$id);$id = str_replace('n','8',$id);$id = str_replace('a','9',$id);$id = str_replace('s','0',$id);$id = strrev($id);return $id;}
+	if(is_numeric($id)){
+	
+		$numero_original = $id;
+
+		$id = str_replace('1','z',$id);
+		$id = str_replace('2','x',$id);
+		$id = str_replace('3','y',$id);
+		$id = str_replace('4','d',$id);
+		$id = str_replace('5','k',$id);
+		$id = str_replace('6','w',$id);
+		$id = str_replace('7','h',$id);
+		$id = str_replace('8','n',$id);
+		$id = str_replace('9','a',$id);
+		$id = str_replace('0','s',$id);
+
+		$id = strrev(strtoupper($id));
+
+		return $id;
+
+	}else{
+
+		return false;
+		
+	}
+
+}
+
+function did($id){ 
+
+	$datos = $id;
+
+	$permitidos = "ZXYDKWHNAS";
+
+	for ($i=0;$i<strlen($datos);$i++){
+
+		if(strpos($permitidos, substr($datos,$i,1))===false){ 
+			return false;
+ 		}
+	}
+ 
+	$id = strtolower($id);
+
+	$id = str_replace('z','1',$id);
+	$id = str_replace('x','2',$id);
+	$id = str_replace('y','3',$id);
+	$id = str_replace('d','4',$id);
+	$id = str_replace('k','5',$id);
+	$id = str_replace('w','6',$id);
+	$id = str_replace('h','7',$id);
+	$id = str_replace('n','8',$id);
+	$id = str_replace('a','9',$id);
+	$id = str_replace('s','0',$id);
+
+	$id = strrev($id);
+
+	return $id;
+
+}
 
 /*-----------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------*/
@@ -48,60 +105,6 @@ Dante.
 */
 /*-----------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------*/
-
-/*
-function encrypt($string,$key) {
-	
-	if(!empty($string) && !empty($key)){
-	
-	$string = str_replace("Ñ","&Ntilde;",$string);
-	$string = str_replace("ñ","&ntilde;",$string);
-	$string = str_replace("á",">&aacute;",$string);
-	$string = str_replace("é",">&eacute;",$string);
-	$string = str_replace("í",">&iacute;",$string);
-	$string = str_replace("ó",">&oacute;",$string);
-	$string = str_replace("ú",">&uacute;",$string);
-	$string = str_replace("Á",">&Aacute;",$string);
-	$string = str_replace("É",">&Eacute;",$string);
-	$string = str_replace("Í",">&Iacute;",$string);
-	$string = str_replace("Ó",">&Oacute;",$string);
-	$string = str_replace("Ú",">&Uacute;",$string);
-
-	  $result = '';
-	  $string = trim($string);
-	  for($i=0; $i<strlen($string); $i++){
-		 $char = substr($string, $i, 1);
-		 $keychar = substr($key, ($i % strlen($key))-1, 1);
-		 $char = chr(ord($char)+ord($keychar));
-		 $result.=$char;
-	  }
-	  
-	  return base64_encode($result);
-	  
-	}
-	  
-}
-	
-function decrypt($string,$key) {
-	
-	if(!empty($string) && !empty($key)){
-	
-	  $result = '';
-	  $string = trim($string);
-	  $string = base64_decode($string);
-	  for($i=0; $i<strlen($string); $i++){
-		 $char = substr($string, $i, 1);
-		 $keychar = substr($key, ($i % strlen($key))-1, 1);
-		 $char = chr(ord($char)-ord($keychar));
-		 $result.=$char;
-	  }
-	  
-	  return utf8_decode($result);
-	  
-	}
-	
-}
-*/
 
 function encrypt($string,$key) {
 	
@@ -143,29 +146,6 @@ function decrypt($string,$key) {
 	}
 	
 }
-
-
-
-
-function enc($string,$key) {
-	
-	return encrypt($string,$key);
-	  
-}
-function dec($string,$key) {
-	
-	return decrypt($string,$key);
-	  
-}
-
-
-
-
-
-
-
-
-
 
 function encrypt_file($archivo_original,$archivo_cifrado,$clave){
 
