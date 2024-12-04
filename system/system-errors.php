@@ -1,9 +1,9 @@
 <?php
 function ierror($id,$msg){
 	
-	global $IMAGINE_ERROR_LOG;
+	global $IMAGINE_DEBUG;
 
-	if($IMAGINE_ERROR_LOG){
+	if($IMAGINE_DEBUG){
 
 		$msg = '@imaginedante | ' . date('d/m/Y H:i:s',time()) . ' | '. $id .' | ' . $msg . ' | Exe: ' . basename($_SERVER['PHP_SELF']) . ' | '.'Error Id: '.uniqid();
 
@@ -32,7 +32,7 @@ function initierror(){
 
 }
 
-if($IMAGINE_ERROR_LOG){
+if($IMAGINE_DEBUG){
 	initierror();
 }
 ?>

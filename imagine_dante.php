@@ -2,7 +2,7 @@
 
 $IMAGINE_ENABLE = true;
 
-$IMAGINE_ERROR_LOG = true; //Archivo de log de errores.
+$IMAGINE_DEBUG = true; //Archivo de log de errores.
 $IMAGINE_TIME_CHANGE = true; //Cambio automático de hora entre horarios de invierno y de verano.
 
 $IMAGINE_TIME_ZONE = 'Europe/Madrid';
