@@ -10,7 +10,7 @@ FILE MODULE 1.0
 //file_write($ruta,$contenido,$metodo = 'w'); //Escribe un archivo.
 //file_download($remoto,$local); //Descarga un archivo de un servidor remoto.
 //file_linecount($file); //Cuenta las filas de un archivo de texto
-//filename($prefijo); devuelbe un nombre de archivo unico.
+//file_name($prefijo); devuelbe un nombre de archivo unico.
 
 
 function file_data($path){
@@ -154,7 +154,7 @@ Dante.
 */	
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
-function filename($prefijo){
+function file_name($prefijo){
 
     return $prefijo.'_'.date("Y").'_'.date("m").'_'.date("d").'_'.time().'_'.rand(1,9000);
 
