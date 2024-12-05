@@ -6,24 +6,26 @@ FILE MODULE 1.0
 
 */
 
-//filecompress($nombre_archivo,$nombre_salida); //Comprimir un archivo.
-//filessize($ruta);	//Devuelbe el tamaño de un archivo.
-//filewrite($ruta,$contenido,$metodo = 'w'); //Escribe un archivo.
-//filedownload($remoto,$local); //Descarga un archivo de un servidor remoto.
-//filelinecount($file); //Cuenta las filas de un archivo de texto
+//file_size($ruta);	//Devuelbe el tamaño de un archivo.
+//file_write($ruta,$contenido,$metodo = 'w'); //Escribe un archivo.
+//file_download($remoto,$local); //Descarga un archivo de un servidor remoto.
+//file_linecount($file); //Cuenta las filas de un archivo de texto
 //filename($prefijo); devuelbe un nombre de archivo unico.
-//thisfile(); //Devuelbe el nombre del archivo actual en el que estamos trabajando.
 
-function get_data($path){
+
+function file_data($path){
 
     if(file_exists($path)){
 
         return file_get_contents($path);
 
+    }else{
+
+    	return false;
+
     }
 
 }
-
 
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
@@ -42,7 +44,7 @@ Dante.
 */
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
-function filessize($ruta) {
+function file_size($ruta) {
 	
 	if(!empty($ruta)){	
 		
@@ -71,7 +73,7 @@ Dante.
 */
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------	
-function filewrite($ruta,$contenido,$metodo = 'w'){
+function file_write($ruta,$contenido,$metodo = 'w'){
 	
 	$file = fopen($ruta, $metodo);
 
@@ -94,7 +96,7 @@ Dante.
 */
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
-function filedownload($remoto,$local){
+function file_download($remoto,$local){
  
 	if(!empty($remoto) && !empty($local)){
 	 
@@ -129,7 +131,7 @@ Dante.
 */	
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
-function filelinecount($file){
+function file_linecount($file){
 
 	$archivo = $file;
 	$lineas = count(file($archivo));
@@ -157,9 +159,5 @@ function filename($prefijo){
     return $prefijo.'_'.date("Y").'_'.date("m").'_'.date("d").'_'.time().'_'.rand(1,9000);
 
 }
-function thisfile(){
 
-    return basename($_SERVER['PHP_SELF']);
-
-}
 ?>
