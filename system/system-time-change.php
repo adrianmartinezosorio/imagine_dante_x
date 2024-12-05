@@ -24,6 +24,7 @@ function is_summer_time(){
 
 }
 
+
 if($IMAGINE_TIME_CHANGE){
 
     if(is_summer_time()){
