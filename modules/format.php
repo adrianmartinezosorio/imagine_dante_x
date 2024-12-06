@@ -1,16 +1,96 @@
 <?php
 /*
 
-PARSEDATA MODULE 1.0
+euro($euros);
+ceros($numero,$cantidad_ceros,$posicion = "left");
 
 format_bytes($bytes); //De bytes a formato segun proceda.
-
 format_roman($integer); //De numeración DECIMAL a numeración ROMANA.
-
 format_ordinal($numero,$sexo = 'o'); De decimal a ordinal.
 
 */
 
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+/*
+DOCUMENTACION (FORMATEAR COMO EUROS)
+
+Funcion: (echo) euro($euros);
+Argumentos: NUMERO.
+
+1ºer Argumento:
+	-El numero a formatear como euro.
+	
+
+Dante.
+http://dantecreations.com/
+*/
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+function euro($euros){
+	
+	if(!empty($euros)){
+
+		if(is_numeric($euros)){
+
+			return number_format($euros, 2, '.', '');
+
+		}else{
+
+			ierror('format_euro','El parametro no es un numero (no_number:'.$euros.').');
+
+		}
+
+	}else{
+
+		ierror('format_euro','Parametro vacio.');
+
+	}
+	
+}
+
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+/*
+DOCUMENTACION (FUNCION DE FORMATEO DE NUMERO CON CEROS)
+
+Funcion: (echo) $numero = ceros(26,10,'left');
+Argumentos: numero a formatear, cantidad de ceros que se añadiran, la posicion de los ceros.
+
+1ºer Argumento:
+	-El numero que se formateara por ejemplo 26 = 00000026.
+	
+2º Argumento:
+	-Es la cantidad de ceros que se añadiran.
+	
+3ºer Argumento:
+	-la posicion de los ceros. Puede ser "left" o "right".
+
+
+Dante.
+http://dantecreations.com/
+3-11-2015
+
+*/
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+function ceros($numero,$cantidad_ceros,$posicion = "left"){
+	
+	if($posicion == 'left'){
+		
+		return str_pad($numero, $cantidad_ceros, "0", STR_PAD_LEFT);
+		
+	}else if($posicion == 'right'){
+		
+		return str_pad($numero, $cantidad_ceros, "0", STR_PAD_RIGHT);
+		
+	}else{
+		
+		ierror('format_ceros','El tercer argumento de la funcion "ceros" esta mal configurado.');
+		
+	}
+	
+}
 
 /*--------------------------------------------------*/
 /*--------------------------------------------------*/
