@@ -3,29 +3,20 @@
 
 PARSEDATA MODULE 1.0
 
-bytes2format($bytes); //De bytes a formato segun proceda.
+format_bytes($bytes); //De bytes a formato segun proceda.
 
-dec2roman($integer); //De numeración DECIMAL a numeración ROMANA.
+format_roman($integer); //De numeración DECIMAL a numeración ROMANA.
 
-dec2ordinal($numero,$sexo = 'o'); De decimal a ordinal.
-
-string2url($string); //De string a url amigable
+format_ordinal($numero,$sexo = 'o'); De decimal a ordinal.
 
 */
 
-function gps2Num($coordPart){
-    $parts = explode('/', $coordPart);
-    if(count($parts) <= 0)
-    return 0;
-    if(count($parts) == 1)
-    return $parts[0];
-    return floatval($parts[0]) / floatval($parts[1]);
-}
+
 /*--------------------------------------------------*/
 /*--------------------------------------------------*/
 /*
 
-Function: bytes2format($bytes);
+Function: format_bytes($bytes);
 
 Date: 8-1-2019
 
@@ -36,28 +27,29 @@ Response: Tamaño formateado segun proceda.
 */
 /*--------------------------------------------------*/
 /*--------------------------------------------------*/
-function bytes2format($bytes){
+function format_bytes($bytes){
   
-  if(!empty($bytes) && is_numeric($bytes)){ 
+    if(!empty($bytes) && is_numeric($bytes)){ 
+      
+      $peso = $bytes;
+      
+      $clase = array(" Bytes", " KB", " MB", " GB", " TB"); 
+      
+      return round($peso/pow(1024,($i = floor(log($peso, 1024)))),2 ).$clase[$i];
+      
+    }else{
+  
+      ierror('format_bytes','El parametro esta vacio o no es un numero.');
+  
+    }
     
-    $peso = $bytes;
-    
-    $clase = array(" Bytes", " KB", " MB", " GB", " TB"); 
-    
-    return round($peso/pow(1024,($i = floor(log($peso, 1024)))),2 ).$clase[$i];
-    
-  }else{
-
-    ierror('parsedata_bytes2format','El parametro esta vacio o no es un numero.');
-
   }
-  
-}
+
 /*--------------------------------------------------*/
 /*--------------------------------------------------*/
 /*
 
-Function: dec2roman($integer);
+Function: format_roman($integer);
 
 Date: 12-04-2018
 
@@ -68,7 +60,7 @@ Response: Numero romano.
 */
 /*--------------------------------------------------*/
 /*--------------------------------------------------*/
-function dec2roman($integer){
+function format_roman($integer){
 
         $table = array('M'=>1000, 'CM'=>900, 'D'=>500, 'CD'=>400, 'C'=>100, 
                        'XC'=>90, 'L'=>50, 'XL'=>40, 'X'=>10, 'IX'=>9,   
@@ -96,7 +88,7 @@ function dec2roman($integer){
 /*--------------------------------------------------*/
 /*
 
-Function: dec2ordinal($numero,$sexo = 'o');
+Function: format_ordinal($numero,$sexo = 'o');
 
 Date: 12-04-2018
 
@@ -106,7 +98,7 @@ Response: Numero ordinal.
 
 */
 /*--------------------------------------------------*/
-function dec2ordinal($numero,$sexo = 'o'){ global $error_key_imagine;
+function format_ordinal($numero,$sexo = 'o'){ 
 
     if($sexo == 'a' || $sexo == 'o'){
 
@@ -179,7 +171,14 @@ function dec2ordinal($numero,$sexo = 'o'){ global $error_key_imagine;
 
 
 
-
+function gps2Num($coordPart){
+    $parts = explode('/', $coordPart);
+    if(count($parts) <= 0)
+    return 0;
+    if(count($parts) == 1)
+    return $parts[0];
+    return floatval($parts[0]) / floatval($parts[1]);
+}
 
 
 
