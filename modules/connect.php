@@ -19,7 +19,6 @@ Argumentos:
 	(Lo mismo para modo server.)
 	
 Dante.
-http://dantecreations.com/
 Creación: 2-11-2015
 Actualizado: 16-12-15
 Actualizado: 9-2-17

@@ -52,7 +52,6 @@ Formatos admitidos:
 Se puede usar http o https indiferentemente.
 
 Dante.
-http://dantecreations.com/
 11-4-2016
 
 */

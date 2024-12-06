@@ -12,7 +12,6 @@ Funcion:  mailhtml($mensaje,$asunto,$denombre,$deemail,$paramail);
 -Se pueden insertar imagenes usando un link.
 
 Dante.
-http://dantecreations.com/
 1-2-2016
 
 */

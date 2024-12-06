@@ -23,7 +23,6 @@ Funcion: escapehtml($string);
 	-STRING.
 
 Dante.
-http://dantecreations.com/
 26-2-2017
 
 
@@ -58,7 +57,6 @@ Funcion: escapestrangecaracters($string);
 	-STRING.
 
 Dante.
-http://dantecreations.com/
 26-2-2017
 */
 /*-----------------------------------------------------------------------*/
@@ -161,7 +159,6 @@ Funcion: escapestrangecaracters($string);
 	-STRING.
 
 Dante.
-http://dantecreations.com/
 26-2-2017
 */
 /*-----------------------------------------------------------------------*/

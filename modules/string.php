@@ -164,7 +164,6 @@ Funcion: ct($texto,$maxcaracteres);
 	-La cantidad maxima de caracteres que se mostrara.
 
 Dante.
-http://dantecreations.com/
 26-2-2017
 
 

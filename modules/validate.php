@@ -45,7 +45,6 @@ Argumentos: un array con los valores a comprovar.
 En caso de que alguno de los valores este vacio devuelbe false, sino true.
 	
 Dante.
-http://dantecreations.com/
 7-1-2016
 
 */
@@ -102,7 +101,6 @@ Argumentos: un array con los valores get a comprovar.
 En caso de que alguno de los valores este vacio o no exista devuelbe false, sino true.
 	
 Dante.
-http://dantecreations.com/
 12-1-2016
 
 */
@@ -159,7 +157,6 @@ Argumentos: un array con los valores numericos a comprovar.
 En caso de que alguno de los valores no sea numerico devolvera false.
 	
 Dante.
-http://dantecreations.com/
 10-5-2016
 
 */
@@ -219,7 +216,6 @@ Argumentos: email.
 
 
 Dante.
-http://dantecreations.com/
 18-11-2015
 
 */
@@ -258,7 +254,6 @@ Argumentos: url.
 
 
 Dante.
-http://dantecreations.com/
 12-1-2017
 
 */
@@ -297,7 +292,6 @@ Argumentos: numero movil.
 
 
 Dante.
-http://dantecreations.com/
 18-11-2015
 
 */
@@ -336,7 +330,6 @@ Argumentos: codigo postal.
 
 
 Dante.
-http://dantecreations.com/
 18-11-2015
 
 */
@@ -376,7 +369,6 @@ Argumentos: datos.
 Valida el nombre de usuario o contraseña de el usuario para login.
 
 Dante.
-http://dantecreations.com/
 21-1-2016
 2-08-2017
 
@@ -412,7 +404,6 @@ Funcion: vcountstr($datos,$minimo,$maximo);
 Argumentos: datos, caracteres minimos, caracteres maximos.
 
 Dante.
-http://dantecreations.com/
 2-08-2017
 
 */
@@ -454,7 +445,6 @@ DOCUMENTACION (FUNCIONES DE ATAJOS)
 Funciones para resumir los tipicos empty e isset.
 
 Dante.
-http://dantecreations.com/
 2-08-2017
 
 */
@@ -502,7 +492,6 @@ Argumentos: NUMERO.
 	
 
 Dante.
-http://dantecreations.com/
 */
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------

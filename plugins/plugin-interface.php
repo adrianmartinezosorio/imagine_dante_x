@@ -78,7 +78,6 @@ EL resultado sera:
 <i class="fa fa-star"></i>
 
 Dante.
-http://dantecreations.com/
 18-4-2016
 
 */
@@ -124,7 +123,6 @@ Funcion:  archivos_cabezera('app/');
 Argumentos: ruta de los archivos.
 
 Dante.
-http://dantecreations.com/
 11-1-2016
 
 */
@@ -168,7 +166,6 @@ Funcion:  colocar_miniaturas($colocacion);
 Argumentos: tipo de imagen.
 
 Dante.
-http://dantecreations.com/
 23-2-2016
 
 */

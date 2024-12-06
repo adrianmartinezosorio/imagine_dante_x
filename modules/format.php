@@ -23,7 +23,7 @@ Argumentos: NUMERO.
 	
 
 Dante.
-http://dantecreations.com/
+
 */
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
@@ -68,7 +68,6 @@ Argumentos: numero a formatear, cantidad de ceros que se añadiran, la posicion 
 
 
 Dante.
-http://dantecreations.com/
 3-11-2015
 
 */

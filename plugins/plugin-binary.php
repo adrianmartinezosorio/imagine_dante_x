@@ -11,7 +11,6 @@ Funcion: binaryencode($str);
   -STRING O STRING BINARIO.
 
 Dante.
-http://dantecreations.com/
 24-2-2017
 */
 /*-----------------------------------------------------------------------*/

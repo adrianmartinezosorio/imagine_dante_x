@@ -17,7 +17,6 @@ Argumentos: variable de sesion, ruta de escape.
 En caso de existir debuelbe true, si no exsite redireccioa a la ruta de escape
 	
 Dante.
-http://dantecreations.com/
 30-11-2015
 
 

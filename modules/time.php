@@ -37,7 +37,6 @@ Obtendra el timestamp actual.
 Funcion: (echo) t();
 
 Dante.
-http://dantecreations.com/
 3-3-2016
 
 */
@@ -82,7 +81,6 @@ Argumentos: DIA, MES, AÑO.
 En caso de acierto devolvera el timestamp de la fecha, en caso de error devolvera false.
 	
 Dante.
-http://dantecreations.com/
 19-1-2016
 11-6-2018
 
@@ -110,7 +108,6 @@ Argumentos: segundos.
 	-La cantidad de segundos a formatear.
 	
 Dante.
-http://dantecreations.com/
 27-12-2015
 
 */
@@ -180,7 +177,6 @@ Argumentos: timestamp,timestamp.
 	-Un timestamp final.
 	
 Dante.
-http://dantecreations.com/
 11-4-2016
 
 */
@@ -200,7 +196,6 @@ Argumentos: timestamp,timestamp.
 	
 	
 Dante.
-http://dantecreations.com/
 15-4-2016
 
 */
@@ -302,7 +297,6 @@ Funcion: (echo) date_interval_years_and_months('2016-11-16','2019-05-31');
 Argumentos: fecha, fecha.
 	
 Dante.
-http://dantecreations.com/
 09-03-2020
 
 */

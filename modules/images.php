@@ -55,7 +55,6 @@ Argumentos: Ruta de la imagen.
 
 	
 Dante.
-http://dantecreations.com/
 22-2-2016
 
 */
@@ -90,7 +89,6 @@ Argumentos: Ruta del archivo, metodo.
 	-alto
 	
 Dante.
-http://dantecreations.com/
 24-11-2015
 
 Antigua funcion "tamano" actualizada el 13-1-2016.
@@ -142,7 +140,6 @@ Argumentos: rarchibo de imagen subido ($_FILES['imagen']), la ruta de destino de
 Importante!!! En la etiqueta <form> es necesario el atributo enctype="multipart/form-data".
 	
 Dante.
-http://dantecreations.com/
 18-11-2015
 
 */
@@ -219,7 +216,6 @@ Argumentos: ruta de la imagen, ancho maximo, alto maximo.
 	-Se le pasara el alto maximo que tendra la imagen.
 	
 Dante.
-http://dantecreations.com/
 4-11-2015
 22-11-2021
 
@@ -350,7 +346,6 @@ Argumentos: ruta de la imagen,grados.
 	-Los grados que girara la imagen (90 para voltear una vez).
 
 Dante.
-http://dantecreations.com/
 4-11-2015
 
 */
@@ -421,7 +416,6 @@ Argumentos: ruta de la imagen.
 	-Estan permitidas las extensiones jpg, png y gif.
 
 Dante.
-http://dantecreations.com/
 4-11-2015
 
 */
@@ -495,7 +489,6 @@ Argumentos: ruta de la imagen.
 	-Estan permitidas las extensiones jpg, png y gif.
 
 Dante.
-http://dantecreations.com/
 4-11-2015
 
 */
@@ -574,7 +567,6 @@ Argumentos: ruta de la imagen, valor de brillo (de -255 a 255 siendo 0 el valor 
 	-De 0 a -255 para disminuir el brillo.
 	
 Dante.
-http://dantecreations.com/
 4-11-2015
 
 */
@@ -653,7 +645,6 @@ Argumentos: ruta de la imagen, valor de contraste (de -255 a 255 siendo 0 el val
 	-De 0 a -255 para disminuir el contraste.
 	
 Dante.
-http://dantecreations.com/
 4-11-2015
 
 */
@@ -738,7 +729,6 @@ Argumentos: ruta de la imagen, valor de rojo, valor de verde, valor de azul.
 
 	
 Dante.
-http://dantecreations.com/
 4-11-2015
 
 */
@@ -813,7 +803,6 @@ Argumentos: ruta de la imagen.
 
 	
 Dante.
-http://dantecreations.com/
 4-11-2015
 
 */

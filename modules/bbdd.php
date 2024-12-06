@@ -17,9 +17,9 @@ Funcion: comprovar_bbdd($conexion,'roots_store_galeria');
 	-El nombre de la tabla de la base de datos qu se comprovara.
 
 Dante.
-http://dantecreations.com/
 2-1-2016
 10-2-2017
+
 */
 /*-----------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------*/
@@ -58,7 +58,6 @@ Funcion: eliminar_bbdd($conexion,'roots_store_galeria');
 	-El nombre de la tabla de la base de datos qu se eliminara.
 
 Dante.
-http://dantecreations.com/
 11-1-2016
 
 */
@@ -99,7 +98,6 @@ Funcion: vaciar_bbdd($conexion,'roots_store_galeria');
 	-El nombre de la tabla de la base de datos qu se vaciara.
 
 Dante.
-http://dantecreations.com/
 11-1-2016
 
 */
@@ -152,7 +150,6 @@ Funcion: $campos = campos_bbdd($c,'dante_autores','nombre'); echo $campos[0];
 Devolbera un array con los campos de la tabla de la base de datos.
 	
 Dante.
-http://dantecreations.com/
 12-2-2016
 Update:
 18-04-2020
@@ -210,7 +207,6 @@ Funcion: $tablas = listar_bbdd($conexion,'roots_store_online'); echo $tablas[0];
 Devolbera un array con los nombres de las tablas de la base de datos.
 	
 Dante.
-http://dantecreations.com/
 3-2-2016
 
 */

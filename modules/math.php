@@ -27,7 +27,6 @@ Devolvera:
 	Numero Impar: impar
 	
 Dante.
-http://dantecreations.com/
 26-6-2016
 
 */
@@ -61,7 +60,6 @@ Argumentos: numero a formatear, cantidad de decimales.
 	-Es la cantidad de decimales que tendra.
 
 Dante.
-http://dantecreations.com/
 5-11-2015
 
 */
@@ -95,7 +93,6 @@ Argumentos: numero, tanto por ciento.
 	-El porcentaje de la cantidad.
 
 Dante.
-http://dantecreations.com/
 5-11-2015
 
 */
@@ -127,7 +124,6 @@ Argumentos: array.
 	
 
 Dante.
-http://dantecreations.com/
 17-4-2016
 
 */
@@ -189,7 +185,6 @@ Por lo tanto se comprovara si la referencia esta entre el numero inicial y el nu
 Devolbera true en caso de que si este. false en caso de que no este en el intervalo.
 
 Dante.
-http://dantecreations.com/
 06-4-2016
 
 */

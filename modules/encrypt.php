@@ -14,7 +14,6 @@ echo did($id); //Desencripta el numero id. Devuelbe false en caso de no recibir 
 EL numero o id.
 
 16-6-2016
-http://dantecreations.com/
 Dante.
 
 */
@@ -100,7 +99,6 @@ La informacion string.
 La llave de encriptacion y desencriptacion
 
 1-3-2017
-http://dantecreations.com/
 Dante.
 */
 /*-----------------------------------------------------------------------*/

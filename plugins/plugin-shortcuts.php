@@ -11,7 +11,6 @@ Convertira la primera letra en mayuscula.
 Funcion: (echo) my($cadena);
 
 Dante.
-http://dantecreations.com/
 12-4-2016
 
 */

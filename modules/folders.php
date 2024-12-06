@@ -50,7 +50,6 @@ Argumentos: ruta de la carpeta.
 
 
 Dante.
-http://dantecreations.com/
 8-2-2016
 
 */
@@ -111,7 +110,6 @@ true: Contiene archivos
 false: No contiene archivos
 
 Dante.
-http://dantecreations.com/
 7-2-2016
 
 */
@@ -148,7 +146,6 @@ Excepciones de los archivos con los nombres:
 -.htaccess
 
 Dante.
-http://dantecreations.com/
 7-2-2016
 
 */

@@ -24,7 +24,6 @@ Obtendra:
 usuarios_eliminar.php?seccion=fotografia&accion=eliminar&id=5 
 
 Dante.
-http://dantecreations.com/
 29-2-2016
 
 */
@@ -83,7 +82,6 @@ Funcion: hdr($ruta);
 Es un alias de Header('Location:index.php');
 
 Dante.
-http://dantecreations.com/
 18-4-2016
 
 */
