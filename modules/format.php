@@ -232,19 +232,19 @@ function format_ordinal($numero,$sexo = 'o'){
 
             }else{
 
-                ierror('parsedata_dec2ordinal','No existe soporte para este numero.');
+                ierror('format_ordinal','No existe soporte para este numero.');
 
             }
 
         }else{
 
-            ierror('parsedata_dec2ordinal','El parametro no es un numero.');
+            ierror('format_ordinal','El parametro no es un numero.');
 
         }
 
     }else{
 
-         ierror('parsedata_dec2ordinal','El parametro sexo no esta bien definido.');
+         ierror('format_ordinal','El parametro sexo no esta bien definido.');
 
     }
 
