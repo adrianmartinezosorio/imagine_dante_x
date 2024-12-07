@@ -53,21 +53,21 @@ if($IMAGINE_ENABLE){
 		'plugin-binary.php'
 	];
 
-	foreach ($IMAGINE_SYSTEM as $sys) {
+	foreach ($IMAGINE_SYSTEM as $system_file) {
 
-		include("system/".$sys);
+		include("system/".$system_file);
 		
 	}
 
-	foreach ($IMAGINE_MODULES as $module) {
+	foreach ($IMAGINE_MODULES as $module_file) {
 
-		include("modules/".$module);
+		include("modules/".$module_file);
 		
 	}
 
-	foreach ($IMAGINE_PLUGINS as $plugin) {
+	foreach ($IMAGINE_PLUGINS as $plugin_file) {
 
-		include("plugins/".$plugin);
+		include("plugins/".$plugin_file);
 
 	}
 
