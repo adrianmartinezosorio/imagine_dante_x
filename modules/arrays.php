@@ -4,13 +4,12 @@
 ARRAYS MODULE
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-17-05-2018
-
 array_clear($array); 		//Elimina las entradas duplicadas de un array y reaordena las claves.
 ver($array); 				//Lanza un var_dump formateado visualmente con html.
-
+array_sort_by(&$arrIni, $col, $order = SORT_ASC);
 
 Updates:
+17-05-2018
 18-02-2020
 
 */
