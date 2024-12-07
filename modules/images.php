@@ -1,5 +1,9 @@
 <?php
 /*
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+IMAGES MODULE
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 -OBTENER TAMAÑO DE IMAGEN - dimensiones_imagen('1.jpg','ancho');
 -SUBIR IMAGEN AL SERVIDOR - subir_imagen($_FILES['imagen'],'imagenes/');
 -REDIMENSIONAR IMAGEN SIN DEFORMAR - escalarimagen('imagen/12345.jpg',200,200);
