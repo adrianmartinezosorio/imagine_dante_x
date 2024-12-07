@@ -13,7 +13,7 @@ if($IMAGINE_ENABLE){
 
 	$IMAGINE_SYSTEM = [
 		'system-errors.php',
-		'system-time-change.php'
+		'system-timechange.php'
 	];
 
 	$IMAGINE_MODULES = [
