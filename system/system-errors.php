@@ -3,15 +3,21 @@ function ierror($id,$msg){
 	
 	global $IMAGINE_DEBUG;
 
-	if($IMAGINE_DEBUG){
+	$msg = '@imaginedante | ' . date('d/m/Y H:i:s',time()) . ' | '. $id .' | ' . $msg . ' | Exe: ' . basename($_SERVER['PHP_SELF']) . ' | '.'Error Id: '.uniqid();
 
-		$msg = '@imaginedante | ' . date('d/m/Y H:i:s',time()) . ' | '. $id .' | ' . $msg . ' | Exe: ' . basename($_SERVER['PHP_SELF']) . ' | '.'Error Id: '.uniqid();
+	if($IMAGINE_DEBUG && $IMAGINE_DEBUG_LOG){
 
 		$file = fopen('ilog.html', 'a');
 
 		fwrite($file, '<br>'.$msg . '<br>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------');
 
 		fclose($file);
+
+	}
+
+	if($IMAGINE_DEBUG && $IMAGINE_DEBUG_DISPLAY){
+
+		echo $msg;
 
 	}
 
@@ -32,7 +38,7 @@ function initierror(){
 
 }
 
-if($IMAGINE_DEBUG){
+if($IMAGINE_DEBUG && $IMAGINE_DEBUG_LOG){
 	initierror();
 }
 ?>
