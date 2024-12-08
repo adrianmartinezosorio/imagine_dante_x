@@ -1,5 +1,5 @@
 <?php
-function create_database($name){
+function database_create($name){
 
     global $IMAGINE_CONNECT_HOST;
     global $IMAGINE_CONNECT_USER;
@@ -27,7 +27,7 @@ function create_database($name){
 
 }
 
-function delete_database($name){
+function database_delete($name){
 
     global $IMAGINE_CONNECT_HOST;
     global $IMAGINE_CONNECT_USER;
@@ -55,7 +55,7 @@ function delete_database($name){
 
 }
 
-function list_database(){
+function database_list(){
 
     global $IMAGINE_CONNECT_HOST;
     global $IMAGINE_CONNECT_USER;

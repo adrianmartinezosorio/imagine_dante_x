@@ -20,7 +20,7 @@ Dante.
 /*-----------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------*/
 
-function cid($id){
+function encrypt_id($id){
 
 	if(is_numeric($id)){
 	
@@ -49,7 +49,7 @@ function cid($id){
 
 }
 
-function did($id){ 
+function decrypt_id($id){ 
 
 	$datos = $id;
 
