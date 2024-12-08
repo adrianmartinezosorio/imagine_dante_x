@@ -4,12 +4,15 @@
 /* 2-08-2017 */
 
 //FUNCIONES PRIMARIAS
+
 //emptys($array);
 //gets($array);
 //numbers($array);
 
 //FUNCIONES SECUNDARIAS
+
 //is_positive($numero);
+//is_negative($numero);
 //is_mail($correo);
 //is_url($url);
 //is_phone($numero);
@@ -484,6 +487,33 @@ function is_positive($numero){
 	}
 
 }
+function is_negative($numero){
 
+	if(!empty($numero)){
+
+		if(is_numeric($numero)){
+
+			if($numero < 0){
+
+				return true;
+
+			}else{
+
+				return false;
+
+			}
+
+		}else{
+
+			ierror('validate_is_negative','El parametro no es un numero (no_number:'.$numero.').');
+
+		}
+	}else{
+
+		ierror('validate_is_negative','Parametro vacio.');
+		
+	}
+
+}
 
 ?>

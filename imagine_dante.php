@@ -7,7 +7,12 @@ $IMAGINE_DEBUG_LOG = true;
 $IMAGINE_DEBUG_DISPLAY = false; 
 
 $IMAGINE_TIME_CHANGE = true; //Cambio automático de hora entre horarios de invierno y de verano.
-$IMAGINE_TIME_ZONE = 'Europe/Madrid';
+
+$IMAGINE_CONFIG = [
+	"CHARSET" => "utf8",
+    "TIME_ZONE" => "Europe/Madrid",
+    "TIME_DEFAULT_FORMAT" => "d/m/Y - H:i:s"
+];
 
 if($IMAGINE_ENABLE){
 
