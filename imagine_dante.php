@@ -41,6 +41,7 @@ if($IMAGINE_ENABLE){
 	];
 
 	$IMAGINE_PLUGINS = [
+		'plugin-legacy.php',
 		'plugin-shortcuts.php',
 		'plugin-phpmyadmin.php',
 		'plugin-entities.php',

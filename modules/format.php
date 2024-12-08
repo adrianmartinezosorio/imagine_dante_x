@@ -1,15 +1,15 @@
 <?php
 /*
+
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 FORMAT MODULE
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-euro($euros);
-ceros($numero,$cantidad_ceros,$posicion = "left");
-
-format_bytes($bytes); //De bytes a formato segun proceda.
-format_roman($integer); //De numeración DECIMAL a numeración ROMANA.
-format_ordinal($numero,$sexo = 'o'); De decimal a ordinal.
+format_euro($euros);
+format_zeros($numero,$cantidad_ceros,$posicion = "left");
+format_bytes($bytes); 
+format_roman($integer);
+format_ordinal($numero,$sexo = 'o'); 
 
 */
 
@@ -30,26 +30,26 @@ Dante.
 */
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
-function euro($euros){
-	
-	if(!empty($euros)){
+function format_euro($euros){
 
-		if(is_numeric($euros)){
+    if(!empty($euros)){
 
-			return number_format($euros, 2, '.', '');
+        if(is_numeric($euros)){
 
-		}else{
+            return number_format($euros, 2, '.', '');
 
-			ierror('format_euro','El parametro no es un numero (no_number:'.$euros.').');
+        }else{
 
-		}
+            ierror('format_euro','El parametro no es un numero (no_number:'.$euros.').');
 
-	}else{
+        }
 
-		ierror('format_euro','Parametro vacio.');
+    }else{
 
-	}
-	
+        ierror('format_euro','Parametro vacio.');
+
+    }
+
 }
 
 //------------------------------------------------------------------------------------------------------
@@ -76,23 +76,24 @@ Dante.
 */
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
-function ceros($numero,$cantidad_ceros,$posicion = "left"){
-	
-	if($posicion == 'left'){
-		
-		return str_pad($numero, $cantidad_ceros, "0", STR_PAD_LEFT);
-		
-	}else if($posicion == 'right'){
-		
-		return str_pad($numero, $cantidad_ceros, "0", STR_PAD_RIGHT);
-		
-	}else{
-		
-		ierror('format_ceros','El tercer argumento de la funcion "ceros" esta mal configurado.');
-		
-	}
-	
+function format_zeros($numero,$cantidad_ceros,$posicion = "left"){
+
+    if($posicion == 'left'){
+        
+        return str_pad($numero, $cantidad_ceros, "0", STR_PAD_LEFT);
+        
+    }else if($posicion == 'right'){
+        
+        return str_pad($numero, $cantidad_ceros, "0", STR_PAD_RIGHT);
+        
+    }else{
+        
+        ierror('format_ceros','El tercer argumento de la funcion "ceros" esta mal configurado.');
+        
+    }
+
 }
+
 
 /*--------------------------------------------------*/
 /*--------------------------------------------------*/
@@ -253,14 +254,7 @@ function format_ordinal($numero,$sexo = 'o'){
 
 
 
-function gps2Num($coordPart){
-    $parts = explode('/', $coordPart);
-    if(count($parts) <= 0)
-    return 0;
-    if(count($parts) == 1)
-    return $parts[0];
-    return floatval($parts[0]) / floatval($parts[1]);
-}
+
 
 
 

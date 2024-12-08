@@ -13,7 +13,14 @@ exif_date_sanitize_date($date);
 Update: 25/01/2020
 */
 
-
+function gps2Num($coordPart){
+    $parts = explode('/', $coordPart);
+    if(count($parts) <= 0)
+    return 0;
+    if(count($parts) == 1)
+    return $parts[0];
+    return floatval($parts[0]) / floatval($parts[1]);
+}
 /*---------------------------------------------------------------------------*/
 /* Obtenemos array con las coordenadas de la imagen. */
 /* 2020 */

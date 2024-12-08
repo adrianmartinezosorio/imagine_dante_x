@@ -15,13 +15,9 @@
 //is_phone($numero);
 //is_postalcode($numero);
 //is_alphanumeric($datos);
+
+
 //vcountstr($datos,$minimo,$maximo);
-
-//FUNCIONES TERCIARIAS (ATAJOS)
-//e($data);
-//i($data);
-//ie($data)
-
 
 /*---------------------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------------*/
@@ -437,42 +433,7 @@ function vcountstr($datos,$minimo,$maximo){
 /*---------------------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------------*/
 
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-/*
-DOCUMENTACION (FUNCIONES DE ATAJOS)
 
-Funciones para resumir los tipicos empty e isset.
-
-Dante.
-2-08-2017
-
-*/
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-function e($data){
-
-	return empty($data);
-
-}
-function i($data){
-
-	return isset($data);
-
-}
-function ie($data){
-
-	if(isset($data) && !empty($data)){
-
-		return true;
-
-	}else{
-
-		return false;
-
-	}
-
-}
 
 
 
@@ -513,29 +474,16 @@ function is_positive($numero){
 
 		}else{
 
-			ierror('matematicas_is_positive','El parametro no es un numero (no_number:'.$numero.').');
+			ierror('validate_is_positive','El parametro no es un numero (no_number:'.$numero.').');
 
 		}
 	}else{
 
-		ierror('matematicas_is_positive','Parametro vacio.');
+		ierror('validate_is_positive','Parametro vacio.');
 		
 	}
 
 }
 
 
-
-
-/*
-function in_string($string,$needle){
-
-    if(strpos($string, $needle) != false) {
-        return true;
-    }else{
-        return false;
-    }
-
-}
-*/
 ?>
