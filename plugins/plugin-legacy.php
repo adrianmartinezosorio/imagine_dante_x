@@ -40,4 +40,17 @@ function ceros($numero,$cantidad_ceros,$posicion = "left"){
 	
 }
 
+function formato($numero,$formateo){
+    
+    if(!is_numeric($numero) || !is_numeric($formateo)){
+        
+        ierror('matematicas_formato','Alguno de los argumentos de la funcion "formato" no es numerico.');
+        
+    }else{
+        
+        return number_format($numero, $formateo, '.', '.' );
+        
+    }
+    
+}
 ?>

@@ -45,39 +45,7 @@ function parximpar($numero){
 	}
 		
 }
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-/*
-DOCUMENTACION (FUNCION DE FORMATEO DE NUMERO)
 
-Funcion: (echo) $numero = formato(120,2);
-Argumentos: numero a formatear, cantidad de decimales.
-
-1ºer Argumento:
-	-El numero que se formateara por ejemplo 120 con dos decimales = 120.00
-	
-2º Argumento:
-	-Es la cantidad de decimales que tendra.
-
-Dante.
-5-11-2015
-
-*/
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-function formato($numero,$formateo){
-	
-	if(!is_numeric($numero) || !is_numeric($formateo)){
-		
-		ierror('matematicas_formato','Alguno de los argumentos de la funcion "formato" no es numerico.');
-		
-	}else{
-		
-		return number_format($numero, $formateo, '.', '.' );
-		
-	}
-	
-}
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
 /*

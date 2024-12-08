@@ -5,6 +5,7 @@
 FORMAT MODULE
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+format($numero,$formateo);
 format_euro($euros);
 format_zeros($numero,$cantidad_ceros,$posicion = "left");
 format_bytes($bytes); 
@@ -12,6 +13,40 @@ format_roman($integer);
 format_ordinal($numero,$sexo = 'o'); 
 
 */
+
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+/*
+DOCUMENTACION (FUNCION DE FORMATEO DE NUMERO)
+
+Funcion: (echo) $numero = formato(120,2);
+Argumentos: numero a formatear, cantidad de decimales.
+
+1ºer Argumento:
+    -El numero que se formateara por ejemplo 120 con dos decimales = 120.00
+    
+2º Argumento:
+    -Es la cantidad de decimales que tendra.
+
+Dante.
+5-11-2015
+
+*/
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+function format($numero,$formateo){
+    
+    if(!is_numeric($numero) || !is_numeric($formateo)){
+        
+        ierror('format','Alguno de los argumentos de la funcion "formato" no es numerico.');
+        
+    }else{
+        
+        return number_format($numero, $formateo, '.', '.' );
+        
+    }
+    
+}
 
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
@@ -88,7 +123,7 @@ function format_zeros($numero,$cantidad_ceros,$posicion = "left"){
         
     }else{
         
-        ierror('format_ceros','El tercer argumento de la funcion "ceros" esta mal configurado.');
+        ierror('format_zeros','El tercer argumento de la funcion "ceros" esta mal configurado.');
         
     }
 
