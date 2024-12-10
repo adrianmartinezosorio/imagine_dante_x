@@ -5,10 +5,6 @@
 TIME MODULE
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-MAGICTIMEMODULE 1.0
-20-3-2018
-11-6-2018
-
 //ATAJOS
 t(); //Obtiene el timestamp actual.
 dd($timestamp,$formato = 'd/m/Y - H:i:s'); //Formatea un timestampo por defecto.
