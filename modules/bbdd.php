@@ -1,5 +1,12 @@
 <?php
 /*
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+SESSION MODULE
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+*/
+/*
 Funciones para simplificar la gestion de las tablas de la base de datos.
 Dante. Noviembre 2015. Creado en un tren entre Madrid y Guadalajara.
 */

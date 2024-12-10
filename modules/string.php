@@ -1,5 +1,10 @@
 <?php
 /*
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+STRING MODULE
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 -----------------------------------------
 MODULE DATA
 -----------------------------------------
@@ -287,46 +292,5 @@ function nomalizeTXT($cadena){
     
 }
 
-/*
 
-Saber si en un string hay alguna subcadena del conjunto.
-
-exclude($string,array("aaa","bbb","ccc")); 
-//Comprobamos si aaa, bbb o ccc estan en $string.
-//Con la primera aparicion de uno de ellos devolvera true.
-
-return boolean.
-
-Mayo 2022.
-
-*/
-function in_string($string,$excludes){
-
-    if(!empty($excludes) && !empty($string) && is_array($excludes)){
-    
-      $count = 0;
-      
-      for($i = 0; $i < count($excludes); $i++){
-          
-          $pos = strpos($string, $excludes[$i]);
-          
-          if($pos !== false){
-              $count++;
-          }
-          
-      }
-      
-      if($count != 0){
-          return true; //En el $string si que habia alguno de los excludes.
-      }else{
-          return false; //En el $string no habia excludes.
-      }
-
-    }
-
-    if(!is_array($excludes)){
-        ierror('imaginequery_in_string','El parámetro $excludes debe ser un array.');
-    }
-    
-}
 ?>

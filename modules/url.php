@@ -1,4 +1,11 @@
 <?php
+/*
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+URL MODULE
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+*/
 /*-----------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------*/
 /*
@@ -16,44 +23,56 @@ Dante.
 */
 /*-----------------------------------------------------------------------*/
 /*-----------------------------------------------------------------------*/
-function string2url($url) {
+function url_friendly($string){
+
+    if(!empty($string)){
  
-      // Tranformamos todo a minusculas
- 
-      $url = strtolower($url);
- 
-      //Rememplazamos caracteres especiales latinos
- 
-      $find = array('á', 'é', 'í', 'ó', 'ú', 'ñ');
- 
-      $repl = array('a', 'e', 'i', 'o', 'u', 'n');
- 
-      $url = str_replace ($find, $repl, $url);
- 
-      // Añadimos los guiones
- 
-      $find = array(' ', '&', 'rn', 'n', '+');
-      $url = str_replace ($find, '-', $url);
- 
-      // Eliminamos y Reemplazamos otros carácteres especiales
- 
-      $find = array('/[^a-z0-9-<>]/', '/[-]+/', '/<[^>]*>/');
- 
-      $repl = array('', '-', '');
- 
-      $url = preg_replace ($find, $repl, $url);
- 
-      return $url;
+        // Tranformamos todo a minusculas
+    
+        $url = strtolower($string);
+    
+        //Rememplazamos caracteres especiales latinos
+    
+        $find = array('á', 'é', 'í', 'ó', 'ú', 'ñ');
+    
+        $repl = array('a', 'e', 'i', 'o', 'u', 'n');
+    
+        $url = str_replace ($find, $repl, $url);
+    
+        // Añadimos los guiones
+    
+        $find = array(' ', '&', 'rn', 'n', '+');
+        $url = str_replace ($find, '-', $url);
+    
+        // Eliminamos y Reemplazamos otros carácteres especiales
+    
+        $find = array('/[^a-z0-9-<>]/', '/[-]+/', '/<[^>]*>/');
+    
+        $repl = array('', '-', '');
+    
+        $url = preg_replace ($find, $repl, $url);
+    
+        return $url;
+
+    }else{
+        return false;
+    }
  
 }
-function beautiful_url($url){
+function url_beautiful($url){
 
-    $url = str_replace('http://', '', $url);
-    $url = str_replace('https://', '', $url);
-    $url = str_replace('www.', '', $url);
-    $url = str_replace('/', '', $url);
+    if(!empty($url)){
 
-    return $url;
+        $url = str_replace('http://', '', $url);
+        $url = str_replace('https://', '', $url);
+        $url = str_replace('www.', '', $url);
+        $url = str_replace('/', '', $url);
+
+        return $url;
+
+    }else{
+        return false;
+    }
 
 }
 
