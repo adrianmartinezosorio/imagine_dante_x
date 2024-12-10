@@ -5,10 +5,6 @@
 STRING MODULE
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
------------------------------------------
-FUNCTION REFERENCE
------------------------------------------
-
 PRINCIPALES
 cut($texto,$maxcaracteres); //Corta el texto y añade puntos suspensivos a partir de un limite.
 in_string($string,$excludes); //Saber si una o mas subcadenas estan en una cadena.
@@ -32,7 +28,8 @@ REEMPLAZO AVANZADO
 first_replace($aguja, $sustituta, $pajar); //Sustituye solo la primera aparicion de una aguja.
 advanced_replace($aguja,$reemplazo,$str);  //Sustituye buscando variables mayusculas, minusculas.
 
---------------------------------------------------------------------------------------------------
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 */
 
 

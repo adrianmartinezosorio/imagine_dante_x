@@ -15,6 +15,8 @@ IMAGE MODULE
 -CAMBIAR CONTRASTE DE IMAGEN - contraste('1.png',20);
 -MANIPULAR EL COLOR DE UNA IMAGEN - color('1.png',100,255,80);
 -FUNCION PARA DAR RELIEVE BUSCANDO BORDES A LA IMAGEN - relieve('1.png');
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 */
 
 

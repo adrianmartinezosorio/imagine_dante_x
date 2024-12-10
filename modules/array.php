@@ -9,6 +9,7 @@ array_clear($array); 		//Elimina las entradas duplicadas de un array y reaordena
 ver($array); 				//Lanza un var_dump formateado visualmente con html.
 array_sort_by(&$arrIni, $col, $order = SORT_ASC);
 
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 */
 //-----------------------------------------------------------------------
 //-----------------------------------------------------------------------

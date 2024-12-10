@@ -5,6 +5,11 @@
 ZIP MODULE
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+zip_file($nombre_archivo,$nombre_salida);
+zip_folder($dir,$rutaFinal,$archivoZip);
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 */
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
@@ -22,7 +27,7 @@ Dante.
 */
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------	
-function filecompress($nombre_archivo,$nombre_salida){
+function zip_file($nombre_archivo,$nombre_salida){
 	 
 	$zip = new ZipArchive();
 	 
@@ -42,7 +47,7 @@ function filecompress($nombre_archivo,$nombre_salida){
 }
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
-function agregar_zip($dir, $zip) {
+function zip_folder_add($dir, $zip) {
   //verificamos si $dir es un directorio
   if (is_dir($dir)) {
     //abrimos el directorio y lo asignamos a $da
@@ -56,7 +61,7 @@ function agregar_zip($dir, $zip) {
          */
         if (is_dir($dir . $archivo) && $archivo != "." && $archivo != "..") {
 
-           agregar_zip($dir . $archivo . "/", $zip);
+           zip_folder_add($dir . $archivo . "/", $zip);
  
           /*si encuentra un archivo imprimimos la ruta donde se encuentra
            * y agregamos el archivo al zip junto con su ruta 
@@ -72,7 +77,7 @@ function agregar_zip($dir, $zip) {
     }
   }
 }
-function zip($dir,$rutaFinal,$archivoZip){
+function zip_folder($dir,$rutaFinal,$archivoZip){
 
 	$zip = new ZipArchive();
 	 
@@ -83,7 +88,7 @@ function zip($dir,$rutaFinal,$archivoZip){
 	$archivoZip = $archivoZip.'.zip';
 	 
 	if ($zip->open($archivoZip, ZIPARCHIVE::CREATE) === true) {
-	  agregar_zip($dir, $zip);
+	  zip_folder_add($dir, $zip);
 	  $zip->close();
 	 
 	  //Muevo el archivo a una ruta

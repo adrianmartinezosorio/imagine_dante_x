@@ -5,25 +5,29 @@
 VALIDATE MODULE
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-//FUNCIONES PRIMARIAS
+FUNCIONES PRIMARIAS
 
-//emptys($array);
-//gets($array);
-//numbers($array);
+emptys($array);
+gets($array);
+numbers($array);
 
-//FUNCIONES SECUNDARIAS
+FUNCIONES SECUNDARIAS
 
-//is_positive($numero);
-//is_negative($numero);
-//is_mail($correo);
-//is_url($url);
-//is_phone($numero);
-//is_postalcode($numero);
-//is_alphanumeric($datos);
-//is_substring($string,$excludes);
+is_positive($numero);
+is_negative($numero);
+is_mail($correo);
+is_url($url);
+is_phone($numero);
+is_postalcode($numero);
+is_alphanumeric($datos);
+is_substring($string,$excludes);
 
 
-//vcountstr($datos,$minimo,$maximo);
+vcountstr($datos,$minimo,$maximo);
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+*/
 
 /*---------------------------------------------------------------------------------------------*/
 /*---------------------------------------------------------------------------------------------*/

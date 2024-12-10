@@ -5,13 +5,16 @@
 FILE MODULE
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+file_size($ruta);	//Devuelbe el tamaño de un archivo.
+file_write($ruta,$contenido,$metodo = 'w'); //Escribe un archivo.
+file_download($remoto,$local); //Descarga un archivo de un servidor remoto.
+file_linecount($file); //Cuenta las filas de un archivo de texto
+file_name($prefijo); devuelbe un nombre de archivo unico.
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 */
 
-//file_size($ruta);	//Devuelbe el tamaño de un archivo.
-//file_write($ruta,$contenido,$metodo = 'w'); //Escribe un archivo.
-//file_download($remoto,$local); //Descarga un archivo de un servidor remoto.
-//file_linecount($file); //Cuenta las filas de un archivo de texto
-//file_name($prefijo); devuelbe un nombre de archivo unico.
+
 
 
 function file_data($path){
