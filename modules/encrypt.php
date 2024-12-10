@@ -5,6 +5,14 @@
 ENCRYPT MODULE
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+encrypt_id($id);
+decrypt_id($id);
+
+encrypt($string,$key);
+decrypt($string,$key);
+
+encrypt_file($archivo_original,$archivo_cifrado,$clave);
+decrypt_file($archivo_cifrado,$archivo_descifrado,$clave);
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 */
