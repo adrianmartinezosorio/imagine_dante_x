@@ -5,12 +5,15 @@
 FOLDER MODULE
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-folder($path);
-folder_copy( $source, $target );
-folder_delete($carpeta);
-folder_size($path);
+folder($path, $permissions = 0777);                         *Crea una carpeta.
+folder_copy($origin_path, $destination_path);               *Copiar una carpeta completa.
+folder_delete($path);                                       *Elimina una carpeta completa.
+folder_size($path);                                         *Obtiene el peso de una carpeta.
+folder_list($path);                                         *Listamos todos los archivos de una carpeta.
+folder_is_empty($path);                                     *Comprobamos si una carpeta contiene archivos.
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 */
 
 
@@ -19,10 +22,10 @@ Crea carpeta si no existe.
 09/04/2021
 
 */
-function folder($path){
+function folder($path, $permissions = 0777){
 
     if (!empty($path) && !file_exists($path)) {
-        mkdir($path, 0777, true);
+        mkdir($path, $permissions, true);
     }
 
 }
@@ -108,90 +111,6 @@ function folder_size($path){
     }
     return $bytestotal;
 }
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-/*
-DOCUMENTACION (COMPROVAR SI UNA CARPETA ESTA VACIA O NO)
-
-Comprovara si una carpeta contiene archivos o no.
-
-Funcion:  carpeta_llena('paradise_data/backups/');
-Argumentos: ruta de la carpeta.
-
-Funcion de true o false.
-
-true: Contiene archivos
-false: No contiene archivos
-
-Dante.
-7-2-2016
-
-*/
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-function carpeta_llena($ruta){
-	
-	$carpeta = @scandir($ruta);
-	
-	if (count($carpeta) > 2){
-		
-		return true;
-		
-	}else{
-		
-		return false;
-		
-	}
-	
-}
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-/*
-DOCUMENTACION (LISTAR ARCHIVOS DE UNA CARPETA).
-
-Devolvera un array con los nombres de todos los archivos de la carpeta.
-
-Funcion:  $array = listar_archivos('paradise_data/backups/'); echo $array[0];
-Argumentos: ruta de la carpeta.
-
-Excepciones de los archivos con los nombres:
--.
--..
--.htaccess
-
-Dante.
-7-2-2016
-
-*/
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-function listar_archivos($carpeta){
-    if(is_dir($carpeta)){
-        if($dir = opendir($carpeta)){
-			
-			$array_archivos = array();
-			
-            while(($archivo = readdir($dir)) !== false){
-                if($archivo != '.' && $archivo != '..' && $archivo != '.htaccess'){
-					
-					
-					array_push($array_archivos, $archivo);
-					
-					
-                }
-            }
-			
-			return $array_archivos;
-			
-            closedir($dir);
-        }
-    }
-}
-
-
-
-
-
 
 /*---------------------------------------------------------------------------*/
 /* Listamos una carpeta completa. */
@@ -267,6 +186,43 @@ function folder_full_list($path){
 
              }
 
+}
+
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+/*
+DOCUMENTACION (COMPROVAR SI UNA CARPETA ESTA VACIA O NO)
+
+Comprovara si una carpeta contiene archivos o no.
+
+Funcion:  carpeta_llena('paradise_data/backups/');
+Argumentos: ruta de la carpeta.
+
+Funcion de true o false.
+
+true: Contiene archivos
+false: No contiene archivos
+
+Dante.
+7-2-2016
+
+*/
+//------------------------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------------------------
+function folder_is_empty($ruta){
+	
+	$carpeta = @scandir($ruta);
+	
+	if (count($carpeta) > 2){
+		
+		return true;
+		
+	}else{
+		
+		return false;
+		
+	}
+	
 }
 
 ?>
