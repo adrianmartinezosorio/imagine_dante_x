@@ -6,6 +6,7 @@ CONNECT MODULE
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 connect($server,$user,$pass,$bbdd);
+cc($c);
 connect_data($return = false);
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -52,6 +53,12 @@ function connect($server,$user,$pass,$bbdd) {
 	
 	return $conexion;
 	
+}
+
+function cc($c){
+
+	mysqli_close($c);
+
 }
 
 function connect_data($return = false){

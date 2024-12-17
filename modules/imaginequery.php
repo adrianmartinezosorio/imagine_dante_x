@@ -222,7 +222,9 @@ function insert($c,$campos,$parametros,$tabla){
 					
 					if(mysqli_query($c, $query)){
 
-						 return $c->insert_id;
+						 ilog("imaginequery_insert","Se ha insertado un nuevo registro con ID ".$c->insert_id." en la tabla ".$tabla);
+
+						 return $c->insert_id; 
 
 					}else{
 						ierror('imaginequery_insert','La consulta no se ejecuto correctamente: '.mysqli_error($c).'<br> QUERY: '.$query);
@@ -314,7 +316,13 @@ function update($c,$campos,$parametros,$id,$tabla,$idprimary = 'id'){ global $er
 
 						ierror('imaginequery_update','La consulta no se ejecuto correctamente.<br>'.$query);
 
+					}else{
+
+						ilog("imaginequery_update","Se ha actualizado un registro con ID ".$id." en la tabla ".$tabla);
+						return true;
+					
 					}
+
 				}else{
 
 					ierror('imaginequery_update','Los campos y los parametros no coinciden.');

@@ -64,6 +64,7 @@ function url_friendly($string){
     }
  
 }
+
 function url_beautiful($url){
 
     if(!empty($url)){

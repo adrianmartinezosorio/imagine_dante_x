@@ -56,7 +56,8 @@ if($IMAGINE_ENABLE){
 		'plugin-youtube.php',
 		'plugin-translate.php',
 		'plugin-mail.php',
-		'plugin-binary.php'
+		'plugin-binary.php',
+		'plugin-image-filters.php'
 	];
 
 	foreach ($IMAGINE_SYSTEM as $system_file) {

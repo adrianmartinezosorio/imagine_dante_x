@@ -5,16 +5,13 @@
 IMAGE MODULE
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
--OBTENER TAMAÑO DE IMAGEN - dimensiones_imagen('1.jpg','ancho');
--SUBIR IMAGEN AL SERVIDOR - subir_imagen($_FILES['imagen'],'imagenes/');
--REDIMENSIONAR IMAGEN SIN DEFORMAR - escalarimagen('imagen/12345.jpg',200,200);
--ROTACION DE IMAGEN - rotar('imagen/12345.jpg',90);
--CONVERTIR IMAGEN A BLANCO Y NEGRO - blanconegro('colores.jpg');
--INVERTIR LOS COLORES DE UNA IMAGEN - negativo('1.png');
--CAMBIAR BRILLO DE IMAGEN - brillo('1.png',20);
--CAMBIAR CONTRASTE DE IMAGEN - contraste('1.png',20);
--MANIPULAR EL COLOR DE UNA IMAGEN - color('1.png',100,255,80);
--FUNCION PARA DAR RELIEVE BUSCANDO BORDES A LA IMAGEN - relieve('1.png');
+image_upload($archivo,$ruta);
+image_size($ruta,$metodo);
+image_resize($originalpath, $originalpath, 1000, 2000);
+image_rotate($originalpath, $originalpath, -90); 
+
+is_jpg($imagepath);
+is_png($imagepath);
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 */
@@ -104,7 +101,7 @@ Disponible con retrocompatibilidad activada.
 */
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
-function dimensiones_imagen($ruta,$metodo){
+function image_size($ruta,$metodo){
 	
       $file = $ruta;
      
@@ -152,7 +149,7 @@ Dante.
 */
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
-function subir_imagen($archivo,$ruta) {
+function image_upload($archivo,$ruta) {
 		
 		$formatos = array( 'image/gif', 'image/png', 'image/jpeg' );
 		
@@ -229,110 +226,68 @@ Dante.
 */
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
-function escalarimagen($ruta,$anchomax,$altomax){
-	
-	//se detecta la extension de la imagen.
-	$analizar_ruta = pathinfo($ruta);
-	$extension = $analizar_ruta['extension'];
-	
+function image_resize($sourcePath, $targetPath, $maxWidth, $maxHeight) {
+    // Obtenemos las dimensiones de la imagen original
+    list($origWidth, $origHeight) = getimagesize($sourcePath);
 
-	if(exif_imagetype($ruta) == IMAGETYPE_JPEG){
-    	$extension = 'jpg';
+    // Calculamos la nueva altura y anchura de la imagen manteniendo la relación de aspecto original
+    $aspectRatio = $origWidth / $origHeight;
+    if ($maxWidth / $maxHeight > $aspectRatio) {
+        $maxWidth = $maxHeight * $aspectRatio;
+    } else {
+        $maxHeight = $maxWidth / $aspectRatio;
     }
 
+    $maxWidth = intval($maxWidth);
+    $maxHeight = intval($maxHeight);
 
-	//Ruta de la imagen original
-	$rutaImagenOriginal = $ruta;
-	
-	//Creamos una variable imagen a partir de la imagen original
-	if($extension == 'jpg'){
-		
-		$img_original = imagecreatefromjpeg($rutaImagenOriginal);
-		
-	}else if($extension == 'png'){
-		
-		$img_original = imagecreatefrompng($rutaImagenOriginal);
-		
-	}else if($extension == 'gif'){
-		
-		$img_original = imagecreatefromgif($rutaImagenOriginal);
-		
-	}else{
-		
-		echo 'La extension del archibo no es correcta.';
-		
-	}
+    // Creamos la imagen de destino con las nuevas dimensiones
+    $targetImage = imagecreatetruecolor($maxWidth, $maxHeight);
 
-	
-	//Se define el maximo ancho o alto que tendra la imagen final
-	$max_ancho = $anchomax;
-	$max_alto = $altomax;
-	
-	//Ancho y alto de la imagen original
-	list($ancho,$alto)=getimagesize($rutaImagenOriginal);
-	
-	//Se calcula ancho y alto de la imagen final
-	$x_ratio = $max_ancho / $ancho;
-	$y_ratio = $max_alto / $alto;
-	
-	//Si el ancho y el alto de la imagen no superan los maximos, 
-	//ancho final y alto final son los que tiene actualmente
-	if( ($ancho <= $max_ancho) && ($alto <= $max_alto) ){//Si ancho 
-		$ancho_final = $ancho;
-		$alto_final = $alto;
-	}
-	/*
-	 * si proporcion horizontal*alto mayor que el alto maximo,
-	 * alto final es alto por la proporcion horizontal
-	 * es decir, le quitamos al alto, la misma proporcion que 
-	 * le quitamos al alto
-	 * 
-	*/
-	elseif (($x_ratio * $alto) < $max_alto){
-		$alto_final = ceil($x_ratio * $alto);
-		$ancho_final = $max_ancho;
-	}
-	/*
-	 * Igual que antes pero a la inversa
-	*/
-	else{
-		$ancho_final = ceil($y_ratio * $ancho);
-		$alto_final = $max_alto;
-	}
-	
-	//Creamos una imagen en blanco de tamaño $ancho_final  por $alto_final .
-	$tmp=imagecreatetruecolor($ancho_final,$alto_final);	
-	
-	//Copiamos $img_original sobre la imagen que acabamos de crear en blanco ($tmp)
-	imagecopyresampled($tmp,$img_original,0,0,0,0,$ancho_final, $alto_final,$ancho,$alto);
-	
-	//Se destruye variable $img_original para liberar memoria
-	imagedestroy($img_original);
-	
-	//Se elimina la image original.
-	unlink($ruta);
-	
-	//Definimos la calidad de la imagen final
-	$calidad=90;
-	
-	//Se crea la imagen final en el directorio indicado
-	if($extension == 'jpg'){
-		$calidad=90;
-		imagejpeg($tmp,$rutaImagenOriginal,$calidad);
-		
-	}else if($extension == 'png'){
-		$calidad=9;
-		imagepng($tmp,$rutaImagenOriginal,$calidad);
-		
-	}else if($extension == 'gif'){
-		$calidad=90;
-		imagegif($tmp,$rutaImagenOriginal,$calidad);
-		
-	}else{
-		
-		echo 'La extension del archibo no es correcta.';
-		
-	}
+    // Cargamos la imagen original
+    switch (exif_imagetype($sourcePath)) {
+        case IMAGETYPE_JPEG:
+            $sourceImage = imagecreatefromjpeg($sourcePath);
+            break;
+        case IMAGETYPE_PNG:
+            $sourceImage = imagecreatefrompng($sourcePath);
+            break;
+        case IMAGETYPE_GIF:
+            $sourceImage = imagecreatefromgif($sourcePath);
+            break;
+        case IMAGETYPE_WEBP:
+            $sourceImage = imagecreatefromwebp($sourcePath);
+            break;
+        default:
+            return false;
+    }
+
+    // Redimensionamos la imagen original y la copiamos en la nueva imagen de destino
+    imagecopyresampled($targetImage, $sourceImage, 0, 0, 0, 0, $maxWidth, $maxHeight, $origWidth, $origHeight);
+
+    // Guardamos la imagen redimensionada en el archivo de destino
+    switch (exif_imagetype($sourcePath)) {
+        case IMAGETYPE_JPEG:
+            imagejpeg($targetImage, $targetPath, 90);
+            break;
+        case IMAGETYPE_PNG:
+            imagepng($targetImage, $targetPath, 9);
+            break;
+        case IMAGETYPE_GIF:
+            imagegif($targetImage, $targetPath);
+            break;
+        case IMAGETYPE_WEBP:
+            imagewebp($targetImage, $targetPath);
+            break;
+        default:
+            return false;
+    }
+
+    // Liberamos la memoria utilizada por las imágenes
+    imagedestroy($sourceImage);
+    imagedestroy($targetImage);
+
+    return true;
 }
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
@@ -358,518 +313,47 @@ Dante.
 */
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
-function rotar($ruta,$grados){
-	
-	$analizar_ruta = pathinfo($ruta);
-	$extension = $analizar_ruta['extension'];
-	
-    $image = $ruta;
-     
-    $degrees = $grados;
-     
-    
-     if($extension == 'jpg'){
-		
-		$source = imagecreatefromjpeg($image);
-		
-	}else if($extension == 'png'){
-		
-		$source = imagecreatefrompng($image);
-		
-	}else if($extension == 'gif'){
-		
-		$source = imagecreatefromgif($image);
-		
-	}else{
-		
-		echo 'La extension del archibo no es correcta.';
-		
+function image_rotate($ruta_original, $ruta_rotada, $angulo) {
+	// Obtener la extensión de la imagen
+	$extension = pathinfo($ruta_original, PATHINFO_EXTENSION);
+  
+	// Cargar la imagen original según su extensión
+	switch($extension) {
+	  case 'jpg':
+	  case 'jpeg':
+		$imagen = imagecreatefromjpeg($ruta_original);
+		break;
+	  case 'png':
+		$imagen = imagecreatefrompng($ruta_original);
+		break;
+	  case 'gif':
+		$imagen = imagecreatefromgif($ruta_original);
+		break;
+	  default:
+		die('Error: formato de imagen no válido');
 	}
-	
-    $rotate = imagerotate($source, $degrees, 0) ;
-      
-	if($extension == 'jpg'){
-		
-		 imagejpeg($rotate, $image);
-		
-	}else if($extension == 'png'){
-		
-		 imagepng($rotate, $image);
-		
-	}else if($extension == 'gif'){
-		
-		 imagegif($rotate, $image);
-		
-	}else{
-		
-		echo 'La extension del archibo no es correcta.';
-		
+  
+	// Rotar la imagen según el ángulo especificado
+	$imagen_rotada = imagerotate($imagen, $angulo, 0);
+  
+	// Guardar la imagen rotada según su extensión
+	switch($extension) {
+	  case 'jpg':
+	  case 'jpeg':
+		imagejpeg($imagen_rotada, $ruta_rotada);
+		break;
+	  case 'png':
+		imagepng($imagen_rotada, $ruta_rotada);
+		break;
+	  case 'gif':
+		imagegif($imagen_rotada, $ruta_rotada);
+		break;
 	}
-	
+  
+	// Liberar la memoria utilizada por las imágenes
+	imagedestroy($imagen);
+	imagedestroy($imagen_rotada);
 }
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-/*
-DOCUMENTACION (FUNCION CONVERSION DE IMAGEN A BLANCO Y NEGRO)
-
-La imagen se pondra en blanco y negro.
-
-Funcion: blanconegro('colores.jpg');
-Argumentos: ruta de la imagen.
-
-
-1ºer Argumento:
-	-Se le pasara la ruta de la imagen.
-	-Estan permitidas las extensiones jpg, png y gif.
-
-Dante.
-4-11-2015
-
-*/
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-function blanconegro($ruta){
-	
-	$analizar_ruta = pathinfo($ruta);
-	$extension = $analizar_ruta['extension'];
-	
-	if($extension == 'jpg'){
-		
-		$im = imagecreatefromjpeg($ruta);
-		
-	}else if($extension == 'png'){
-		
-		$im = imagecreatefrompng($ruta);
-		
-	}else if($extension == 'gif'){
-		
-		$im = imagecreatefromgif($ruta);
-		
-	}else{
-		
-		echo 'La extension del archibo no es correcta.';
-		
-	}
-						
-	if($im && imagefilter($im, IMG_FILTER_GRAYSCALE)){
-		
-		if($extension == 'jpg'){
-		
-			imagejpeg($im, $ruta);
-		
-		}else if($extension == 'png'){
-			
-			imagepng($im, $ruta);
-			
-		}else if($extension == 'gif'){
-			
-			imagegif($im, $ruta);
-			
-		}else{
-		
-			echo 'La extension del archibo no es correcta.';
-		
-		}
-							
-	}else{
-							
-		echo 'La imagen no se convirtio a escala de grises.';
-							
-	}
-	
-	imagedestroy($im);
-	
-}
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-/*
-DOCUMENTACION (FUNCION CONVERSION DE IMAGEN A INVERTIDA)
-
-Se invertiran los colores de la imagen.
-
-Funcion: negativo('1.png');
-Argumentos: ruta de la imagen.
-
-
-1ºer Argumento:
-	-Se le pasara la ruta de la imagen.
-	-Estan permitidas las extensiones jpg, png y gif.
-
-Dante.
-4-11-2015
-
-*/
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-function negativo($ruta){
-	
-	$analizar_ruta = pathinfo($ruta);
-	$extension = $analizar_ruta['extension'];
-	
-	if($extension == 'jpg'){
-		
-		$im = imagecreatefromjpeg($ruta);
-		
-	}else if($extension == 'png'){
-		
-		$im = imagecreatefrompng($ruta);
-		
-	}else if($extension == 'gif'){
-		
-		$im = imagecreatefromgif($ruta);
-		
-	}else{
-		
-		echo 'La extension del archibo no es correcta.';
-		
-	}
-						
-	if($im && imagefilter($im, IMG_FILTER_NEGATE)){
-		
-		if($extension == 'jpg'){
-		
-			imagejpeg($im, $ruta);
-		
-		}else if($extension == 'png'){
-			
-			imagepng($im, $ruta);
-			
-		}else if($extension == 'gif'){
-			
-			imagegif($im, $ruta);
-			
-		}else{
-		
-			echo 'La extension del archibo no es correcta.';
-		
-		}
-							
-	}else{
-							
-		echo 'La imagen no se convirtio a invertida.';
-							
-	}
-	
-	imagedestroy($im);
-	
-}
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-/*
-DOCUMENTACION (FUNCION FUNCION MANIPULAR BRILLO DE IMAGEN)
-
-Se cambiara el brillo de la imagen.
-
-Funcion: brillo('1.png',20);
-Argumentos: ruta de la imagen, valor de brillo (de -255 a 255 siendo 0 el valor pro defecto).
-
-
-1ºer Argumento:
-	-Se le pasara la ruta de la imagen.
-	-Estan permitidas las extensiones jpg, png y gif.
-	
-2º Argumento:
-	-Se le pasara la cantidad de brillo en forma de numero.
-	-De 0 a 255 para aumentar el brillo.
-	-De 0 a -255 para disminuir el brillo.
-	
-Dante.
-4-11-2015
-
-*/
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-function brillo($ruta,$valor){
-	
-	$analizar_ruta = pathinfo($ruta);
-	$extension = $analizar_ruta['extension'];
-	
-	if($extension == 'jpg'){
-		
-		$im = imagecreatefromjpeg($ruta);
-		
-	}else if($extension == 'png'){
-		
-		$im = imagecreatefrompng($ruta);
-		
-	}else if($extension == 'gif'){
-		
-		$im = imagecreatefromgif($ruta);
-		
-	}else{
-		
-		echo 'La extension del archibo no es correcta.';
-		
-	}
-						
-	if($im && imagefilter($im, IMG_FILTER_BRIGHTNESS, $valor)){
-		
-		if($extension == 'jpg'){
-		
-			imagejpeg($im, $ruta);
-		
-		}else if($extension == 'png'){
-			
-			imagepng($im, $ruta);
-			
-		}else if($extension == 'gif'){
-			
-			imagegif($im, $ruta);
-			
-		}else{
-		
-			echo 'La extension del archibo no es correcta.';
-		
-		}
-							
-	}else{
-							
-		echo 'La imagen no cambio de brillo.';
-							
-	}
-	
-	imagedestroy($im);
-	
-}
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-/*
-DOCUMENTACION (FUNCION PARA MANIPULAR EL CONTRASTE DE IMAGEN)
-
-Se cambiara el contraste de la imagen.
-
-Funcion: contraste('1.png',20);
-Argumentos: ruta de la imagen, valor de contraste (de -255 a 255 siendo 0 el valor pro defecto).
-
-
-1ºer Argumento:
-	-Se le pasara la ruta de la imagen.
-	-Estan permitidas las extensiones jpg, png y gif.
-	
-2º Argumento:
-	-Se le pasara la cantidad de contraste en forma de numero.
-	-De 0 a 255 para aumentar el contraste.
-	-De 0 a -255 para disminuir el contraste.
-	
-Dante.
-4-11-2015
-
-*/
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-function contraste($ruta,$valor){
-	
-	$analizar_ruta = pathinfo($ruta);
-	$extension = $analizar_ruta['extension'];
-	
-	if($extension == 'jpg'){
-		
-		$im = imagecreatefromjpeg($ruta);
-		
-	}else if($extension == 'png'){
-		
-		$im = imagecreatefrompng($ruta);
-		
-	}else if($extension == 'gif'){
-		
-		$im = imagecreatefromgif($ruta);
-		
-	}else{
-		
-		echo 'La extension del archibo no es correcta.';
-		
-	}
-						
-	if($im && imagefilter($im, IMG_FILTER_CONTRAST, $valor)){
-		
-		if($extension == 'jpg'){
-		
-			imagejpeg($im, $ruta);
-		
-		}else if($extension == 'png'){
-			
-			imagepng($im, $ruta);
-			
-		}else if($extension == 'gif'){
-			
-			imagegif($im, $ruta);
-			
-		}else{
-		
-			echo 'La extension del archibo no es correcta.';
-		
-		}
-							
-	}else{
-							
-		echo 'La imagen no cambio de brillo.';
-							
-	}
-	
-	imagedestroy($im);
-	
-}
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-/*
-DOCUMENTACION (FUNCION PARA MANIPULAR EL COLOR DE UNA IMAGEN)
-
-Se cambiara el color de la imagen.
-
-Funcion: color($ruta,$red,$green,$blue); -- color('1.png',100,255,80);
-Argumentos: ruta de la imagen, valor de rojo, valor de verde, valor de azul.
-
-
-1ºer Argumento:
-	-Se le pasara la ruta de la imagen.
-	-Estan permitidas las extensiones jpg, png y gif.
-	
-2º Argumento:
-	-La cantidad de rojo en la imagen (0 a 255);
-	
-3º Argumento:
-	-La cantidad de verde en la imagen (0 a 255);
-	
-4º Argumento:
-	-La cantidad de azul en la imagen (0 a 255);
-	
-
-	
-Dante.
-4-11-2015
-
-*/
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-function color($ruta,$red,$green,$blue){
-	
-	$analizar_ruta = pathinfo($ruta);
-	$extension = $analizar_ruta['extension'];
-	
-	if($extension == 'jpg'){
-		
-		$im = imagecreatefromjpeg($ruta);
-		
-	}else if($extension == 'png'){
-		
-		$im = imagecreatefrompng($ruta);
-		
-	}else if($extension == 'gif'){
-		
-		$im = imagecreatefromgif($ruta);
-		
-	}else{
-		
-		echo 'La extension del archibo no es correcta.';
-		
-	}
-						
-	if($im && imagefilter($im, IMG_FILTER_COLORIZE, $red, $green, $blue)){
-		
-		if($extension == 'jpg'){
-		
-			imagejpeg($im, $ruta);
-		
-		}else if($extension == 'png'){
-			
-			imagepng($im, $ruta);
-			
-		}else if($extension == 'gif'){
-			
-			imagegif($im, $ruta);
-			
-		}else{
-		
-			echo 'La extension del archibo no es correcta.';
-		
-		}
-							
-	}else{
-							
-		echo 'La imagen no cambio de brillo.';
-							
-	}
-	
-	imagedestroy($im);
-	
-}
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-/*
-DOCUMENTACION (FUNCION PARA DAR RELIEVE BUSCANDO BORDES A LA IMAGEN)
-
-Se cromara en gris y se pondra en relieve.
-
-Funcion: relieve('1.png');
-Argumentos: ruta de la imagen.
-
-
-1ºer Argumento:
-	-Se le pasara la ruta de la imagen.
-	-Estan permitidas las extensiones jpg, png y gif.
-
-	
-Dante.
-4-11-2015
-
-*/
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-function relieve($ruta){
-	
-	$analizar_ruta = pathinfo($ruta);
-	$extension = $analizar_ruta['extension'];
-	
-	if($extension == 'jpg'){
-		
-		$im = imagecreatefromjpeg($ruta);
-		
-	}else if($extension == 'png'){
-		
-		$im = imagecreatefrompng($ruta);
-		
-	}else if($extension == 'gif'){
-		
-		$im = imagecreatefromgif($ruta);
-		
-	}else{
-		
-		echo 'La extension del archibo no es correcta.';
-		
-	}
-						
-	if($im && imagefilter($im, IMG_FILTER_EMBOSS)){
-		
-		if($extension == 'jpg'){
-		
-			imagejpeg($im, $ruta);
-		
-		}else if($extension == 'png'){
-			
-			imagepng($im, $ruta);
-			
-		}else if($extension == 'gif'){
-			
-			imagegif($im, $ruta);
-			
-		}else{
-		
-			echo 'La extension del archibo no es correcta.';
-		
-		}
-							
-	}else{
-							
-		echo 'La imagen no se convirtio a relieve.';
-							
-	}
-	
-	imagedestroy($im);
-	
-}
-//------------------------------------------------------------------------------------------------------
-//------------------------------------------------------------------------------------------------------
-
 
 
 

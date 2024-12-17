@@ -8,11 +8,9 @@ FREEQUERY MODULE
 q($c,$query);
 n($query);
 f($query);
-
 qn($c,$query);
 qf($c,$query);
 
-cc($c);
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 */
@@ -70,12 +68,6 @@ function qf($c,$query){
 
 	}
 	
-}
-
-function cc($c){
-
-	mysqli_close($c);
-
 }
 
 ?>
