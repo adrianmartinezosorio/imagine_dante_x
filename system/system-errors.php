@@ -1,18 +1,26 @@
 <?php
 function ilog($id,$msg){
 
+		global $IMAGINE_LOG;
+
 		$msg = '@imaginedante | ' . date('d/m/Y H:i:s',time()) . ' | '. $id .' | ' . $msg . ' | Exe: ' . basename($_SERVER['PHP_SELF']) . ' | '.'Error Id: '.uniqid();
 
-		$file = fopen('ilog.html', 'a');
+		if($IMAGINE_LOG){
 
-		fwrite($file, '<br>'.$msg . '<br>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------');
+			$file = fopen('ilog.html', 'a');
 
-		fclose($file);
+			fwrite($file, '<br>'.$msg . '<br>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------');
+
+			fclose($file);
+
+		}
 
 }
 function ierror($id,$msg){
 	
 	global $IMAGINE_DEBUG;
+	global $IMAGINE_DEBUG_LOG;
+	global $IMAGINE_DEBUG_DISPLAY;
 
 	$msg = '@imaginedante | ' . date('d/m/Y H:i:s',time()) . ' | '. $id .' | ' . $msg . ' | Exe: ' . basename($_SERVER['PHP_SELF']) . ' | '.'Error Id: '.uniqid();
 

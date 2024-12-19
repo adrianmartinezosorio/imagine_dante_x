@@ -10,37 +10,18 @@ image_size($ruta,$metodo);
 image_resize($originalpath, $originalpath, 1000, 2000);
 image_rotate($originalpath, $originalpath, -90); 
 
+is_image($archivo);
 is_jpg($imagepath);
 is_png($imagepath);
+is_gif($imagepath);
+is_webp($imagepath);
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 */
 
 
-/*-----------------------------------------------------------------------*/
-/*
-Saber si una imagen es jpg o png.
-25-11-2021
-*/
-/*-----------------------------------------------------------------------*/
-function is_jpg($imagepath){
 
-	if(exif_imagetype($imagepath) == IMAGETYPE_JPEG){
-    	return true;
-    }else{
-    	return false;
-    }
-
-}
-function is_png($imagepath){
-
-	if(exif_imagetype($imagepath) == IMAGETYPE_PNG){
-    	return true;
-    }else{
-    	return false;
-    }
-
-}
 //------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------
 /*
@@ -356,7 +337,59 @@ function image_rotate($ruta_original, $ruta_rotada, $angulo) {
 }
 
 
+/*-----------------------------------------------------------------------*/
+/*
+Saber si una imagen es jpg o png.
+25-11-2021
+*/
+/*-----------------------------------------------------------------------*/
+function is_image($archivo) {
+    $extensionesPermitidas = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+    $extension = strtolower(pathinfo($archivo, PATHINFO_EXTENSION));
 
+    if (!in_array($extension, $extensionesPermitidas)) {
+        return false; // La extensión no es de una imagen
+    }
+
+    // Confirma que el archivo es una imagen
+    return getimagesize($archivo) !== false;
+}
+function is_jpg($imagepath){
+
+	if(exif_imagetype($imagepath) == IMAGETYPE_JPEG){
+    	return true;
+    }else{
+    	return false;
+    }
+
+}
+function is_png($imagepath){
+
+	if(exif_imagetype($imagepath) == IMAGETYPE_PNG){
+    	return true;
+    }else{
+    	return false;
+    }
+
+}
+function is_gif($imagepath){
+
+	if(exif_imagetype($imagepath) == IMAGETYPE_GIF){
+    	return true;
+    }else{
+    	return false;
+    }
+
+}
+function is_webp($imagepath){
+
+	if(exif_imagetype($imagepath) == IMAGETYPE_WEBP){
+    	return true;
+    }else{
+    	return false;
+    }
+
+}
 
 
 

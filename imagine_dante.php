@@ -2,6 +2,7 @@
 
 $IMAGINE_ENABLE = true;
 
+$IMAGINE_LOG = true; 
 $IMAGINE_DEBUG = true; 
 $IMAGINE_DEBUG_LOG = true; 
 $IMAGINE_DEBUG_DISPLAY = false; 
@@ -33,13 +34,13 @@ if($IMAGINE_ENABLE){
 		'file.php',
 		'folder.php',
 		'time.php',
-		'random.php',
 		'format.php',
 		'encrypt.php',
 		'array.php',
 		'session.php',
 		'path.php',
 		'url.php',
+		'random.php',
 		'image.php',
 		'json.php',
 		'zip.php'
