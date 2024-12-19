@@ -5,16 +5,83 @@
 PATH MODULE
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+path_full();
+path_protocol();
+path_host();
+path_route();
+path_file();
+path_redirect($ruta = '');
+
 thisfile();
 ao($condiciones = '');
 hdr($ruta = '');
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 */
-function thisfile(){
+
+function path_full(){
+
+    // Protocolo (http o https)
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
+
+    // Nombre del servidor (ejemplo: www.ejemplo.com)
+    $host = $_SERVER['HTTP_HOST'];
+
+    // URI de la solicitud (ejemplo: /ruta/pagina.php)
+    $uri = $_SERVER['REQUEST_URI'];
+
+    // Construcción de la URL completa
+    $fullUrl = $protocol . $host . $uri;
+
+    return $fullUrl;
+
+}
+
+function path_protocol(){
+
+    // Protocolo (http o https)
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? "https://" : "http://";
+
+    return $protocol;
+
+}
+
+function path_host(){
+
+    // Nombre del servidor (ejemplo: www.ejemplo.com)
+    $host = $_SERVER['HTTP_HOST'];
+
+    return $host;
+
+}
+
+function path_route(){
+
+    // URI de la solicitud (ejemplo: /ruta/pagina.php)
+    $uri = $_SERVER['REQUEST_URI'];
+
+    return $uri;
+
+}
+
+function path_file(){
 
     return basename($_SERVER['PHP_SELF']);
 
+}
+
+function path_redirect($ruta = ''){
+	
+	if(!empty($ruta)){
+
+		Header('Location:'.$ruta);
+
+	}else{
+
+		Header('Location:'.$_SERVER['PHP_SELF']);
+
+	}
+	
 }
 
 //------------------------------------------------------------------------------------------------------

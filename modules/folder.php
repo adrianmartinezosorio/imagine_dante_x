@@ -160,7 +160,7 @@ function folder_full_list_process($ruta,$uniqidname)
      }
 
 }
-function folder_full_list($path){
+function folder_list($path){
 
              $uniqidname = uniqid().uniqid();
 
