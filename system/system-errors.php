@@ -41,23 +41,5 @@ function ierror($id,$msg){
 	}
 
 }
-function initierror(){
 
-	if(!file_exists('ilog.html')){
-
-		$msg = '@imaginedante | ' . date('d/m/Y H:i:s',time()) . ' | eyectproyect<br>-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------';
-
-		$file = fopen('ilog.html', 'a');
-
-		fwrite($file,$msg);
-
-		fclose($file);
-
-	}
-
-}
-
-if($IMAGINE_DEBUG && $IMAGINE_DEBUG_LOG){
-	initierror();
-}
 ?>
