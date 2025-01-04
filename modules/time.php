@@ -26,6 +26,11 @@ transcurrido_mes_actual_porcent();//Porcentaje de mes actual transscurrido.
 
 birthdaytoage($dianaz,$mesnaz,$anonaz); //Fecha nacimiento a edad.
 
+minutes_to_milliseconds($minutes);
+minutes_to_seconds($minutes);
+
+is_leapyear($year); //Función para comprobar si un año es bisiesto.
+
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 */
@@ -474,4 +479,12 @@ function minutes_to_milliseconds($minutes){
     }
 
 }
+
+
+
+// Función para comprobar si un año es bisiesto
+function is_leapyear($year){
+    return ($year % 4 == 0 && ($year % 100 != 0 || $year % 400 == 0));
+}
+
 ?>

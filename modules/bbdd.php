@@ -7,6 +7,7 @@ BBDD MODULE
 
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
 */
 /*
 Funciones para simplificar la gestion de las tablas de la base de datos.
