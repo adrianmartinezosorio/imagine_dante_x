@@ -177,4 +177,57 @@ function file_name($prefijo = ""){
 
 }
 
+
+
+function change_file_extension($directorio,$extensionAntigua,$nuevaExtension){
+
+	// Carpeta en la que se encuentran los archivos
+	//$directorio = "memory/cache/tw";
+
+	// Extensión antigua que quieres cambiar (sin el punto)
+	//$extensionAntigua = "txt"; // Ejemplo: "txt", "jpg", etc.
+
+	// Nueva extensión a asignar
+	//$nuevaExtension = "memory"; // Ejemplo: "pdf", "png", etc.
+
+	// Asegúrate de que la carpeta exista
+	if (!is_dir($directorio)) {
+		die("El directorio especificado no existe.");
+	}
+
+	// Abrir la carpeta
+	if ($handle = opendir($directorio)) {
+		while (false !== ($archivo = readdir($handle))) {
+			// Ignorar los directorios "." y ".."
+			if ($archivo != "." && $archivo != "..") {
+				// Ruta completa del archivo
+				$rutaCompleta = $directorio . DIRECTORY_SEPARATOR . $archivo;
+
+				// Asegurarse de que sea un archivo
+				if (is_file($rutaCompleta)) {
+					// Obtener información del archivo
+					$infoArchivo = pathinfo($rutaCompleta);
+
+					// Verificar si la extensión coincide con la antigua
+					if (isset($infoArchivo['extension']) && $infoArchivo['extension'] === $extensionAntigua) {
+						// Crear el nuevo nombre con la nueva extensión
+						$nuevoNombre = $infoArchivo['filename'] . '.' . $nuevaExtension;
+
+						// Ruta completa del nuevo archivo
+						$nuevaRuta = $directorio . DIRECTORY_SEPARATOR . $nuevoNombre;
+
+						// Renombrar el archivo
+						if (rename($rutaCompleta, $nuevaRuta)) {
+							echo "Archivo renombrado: $archivo a $nuevoNombre\n";
+						} else {
+							echo "Error al renombrar: $archivo\n";
+						}
+					}
+				}
+			}
+		}
+		closedir($handle);
+	}
+    
+} 
 ?>
