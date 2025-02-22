@@ -37,6 +37,7 @@ if($IMAGINE_ENABLE){
 		'format.php',
 		'encrypt.php',
 		'array.php',
+		'code.php',
 		'session.php',
 		'path.php',
 		'url.php',
