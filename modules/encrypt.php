@@ -176,12 +176,20 @@ function encrypt_file($archivo_original,$archivo_cifrado,$clave){
 
 function decrypt_file($archivo_cifrado,$archivo_descifrado,$clave){
 
-    $contenido_archivo = file_get_contents($archivo_cifrado);
-    $iv = substr($contenido_archivo, 0, openssl_cipher_iv_length('aes-256-cbc'));
+	if(file_exists($archivo_cifrado) && !empty($archivo_descifrado) && !empty($clave)){
 
-    $contenido_descifrado = openssl_decrypt(substr($contenido_archivo, openssl_cipher_iv_length('aes-256-cbc')), 'aes-256-cbc', $clave, OPENSSL_RAW_DATA, $iv);
+		$contenido_archivo = file_get_contents($archivo_cifrado);
+		$iv = substr($contenido_archivo, 0, openssl_cipher_iv_length('aes-256-cbc'));
 
-    file_put_contents($archivo_descifrado, $contenido_descifrado);
+		$contenido_descifrado = openssl_decrypt(substr($contenido_archivo, openssl_cipher_iv_length('aes-256-cbc')), 'aes-256-cbc', $clave, OPENSSL_RAW_DATA, $iv);
+
+		file_put_contents($archivo_descifrado, $contenido_descifrado);
+
+	}else{
+
+		echo "Error en cifrado.";
+
+	}
 
 }
 ?>

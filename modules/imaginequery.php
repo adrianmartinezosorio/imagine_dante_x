@@ -303,7 +303,7 @@ function update($c,$campos,$parametros,$id,$tabla,$idprimary = 'id'){ global $er
 							
 						}else{
 							
-							$query .= trim($campos[$i]) . ' = ' . "'" . trim($parametros[$i])  . "'" . ', ';
+							$query .= trim((string) $campos[$i]) . ' = ' . "'" . trim((string) $parametros[$i])  . "'" . ', ';
 							
 						}
 							
