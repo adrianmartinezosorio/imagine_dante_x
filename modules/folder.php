@@ -29,6 +29,45 @@ function folder($path, $permissions = 0777){
     }
 
 }
+
+// Función recursiva para crear carpetas
+/*
+
+	$structure = [
+		"data" => [
+			"decrypt" => [
+				"tt", "nn", "nl", "cd", "mp", "ti", "kb", "tm", "nm", "tb", "nb", "tw", "nw"
+			],
+			"encrypt" => [
+				"tt", "nn", "nl", "cd", "mp", "ti", "kb", "tm", "nm", "tb", "nb", "tw", "nw"
+			],
+			"backup" => [
+				"tt", "nn", "nl", "cd", "mp", "ti", "kb", "tm", "nm", "tb", "nb", "tw", "nw"
+			]
+		],
+		"uploads" => [
+			"encrypt" => [
+				"full", "medium", "small"
+			],
+			"decrypt" => [
+				"full", "medium", "small"
+			]
+		],
+		"execute" => []
+	];
+
+*/
+function folders($base_path, $folders) {
+	foreach ($folders as $key => $value) {
+		if (is_array($value)) {
+			$path = is_string($key) ? $base_path . $key . '/' : $base_path . $value . '/';
+			folder($path);
+			folders($path, $value);
+		} else {
+			folder($base_path . $value . '/');
+		}
+	}
+}
 /*---------------------------------------------------------------------------*/
 /* Copiamos una carpeta completa. */
 /* 2020 */
